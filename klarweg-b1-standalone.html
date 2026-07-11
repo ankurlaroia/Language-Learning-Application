@@ -1,0 +1,1484 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6548e8" />
+  <meta name="description" content="Klarweg is a premium, interactive German B1 learning experience with 364 thematic vocabulary items, adaptive practice and AI coaching." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Klarweg — German B1, made clear</title>
+  
+  
+  <style>
+:root {
+  --bg: #f6f7fb;
+  --surface: rgba(255,255,255,.9);
+  --surface-solid: #ffffff;
+  --surface-2: #f1f3f8;
+  --surface-3: #e8ebf2;
+  --ink: #171824;
+  --muted: #72758a;
+  --faint: #a7a9b7;
+  --line: rgba(34,38,63,.09);
+  --line-strong: rgba(34,38,63,.16);
+  --purple: #6747e8;
+  --purple-2: #8c72f2;
+  --purple-soft: #eee9ff;
+  --green: #27b47e;
+  --green-soft: #e7f8f1;
+  --rose: #ec5e8e;
+  --blue: #4586ee;
+  --cyan: #37b9d0;
+  --amber: #f0a83b;
+  --orange: #f27b43;
+  --shadow-sm: 0 1px 2px rgba(15,19,38,.04), 0 8px 24px rgba(15,19,38,.05);
+  --shadow-md: 0 20px 55px rgba(37,31,84,.12), 0 2px 8px rgba(37,31,84,.05);
+  --shadow-lg: 0 32px 90px rgba(28,24,64,.22);
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --sidebar: 244px;
+  --topbar: 74px;
+  --der: #3e84f1;
+  --die: #ef5c93;
+  --das: #e7a93a;
+}
+
+html[data-theme="dark"] {
+  --bg: #0f1119;
+  --surface: rgba(26,28,40,.9);
+  --surface-solid: #1a1c28;
+  --surface-2: #222531;
+  --surface-3: #2b2e3d;
+  --ink: #f4f3fb;
+  --muted: #a4a5b5;
+  --faint: #6e7185;
+  --line: rgba(255,255,255,.08);
+  --line-strong: rgba(255,255,255,.15);
+  --purple: #8e75ff;
+  --purple-2: #a58eff;
+  --purple-soft: #2b2646;
+  --green-soft: #17352c;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.15), 0 10px 28px rgba(0,0,0,.2);
+  --shadow-md: 0 24px 60px rgba(0,0,0,.33);
+  --shadow-lg: 0 35px 100px rgba(0,0,0,.48);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid color-mix(in srgb, var(--purple) 42%, transparent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--purple) 25%, transparent); }
+
+.skip-link { position: fixed; left: 16px; top: -60px; z-index: 9999; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 10px; text-decoration: none; transition: top .2s; }
+.skip-link:focus { top: 14px; }
+.ambient { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .18; pointer-events: none; z-index: -1; }
+.ambient-one { width: 480px; height: 480px; background: #8064f5; top: -250px; right: -180px; }
+.ambient-two { width: 360px; height: 360px; background: #62d1bd; bottom: -220px; left: 18%; opacity: .11; }
+
+.app-shell { min-height: 100vh; }
+.sidebar {
+  position: fixed; inset: 0 auto 0 0; width: var(--sidebar); z-index: 60;
+  display: flex; flex-direction: column; padding: 24px 16px 18px;
+  background: color-mix(in srgb, var(--surface-solid) 94%, transparent);
+  border-right: 1px solid var(--line); backdrop-filter: blur(18px);
+}
+.brand { display: flex; align-items: center; gap: 12px; padding: 0 10px 26px; color: var(--ink); text-decoration: none; }
+.brand > span:last-child { display: flex; flex-direction: column; line-height: 1.1; }
+.brand strong { font-size: 19px; letter-spacing: -.4px; }
+.brand small { color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+.brand-mark { position: relative; width: 38px; height: 38px; border-radius: 13px; background: linear-gradient(145deg, #8e73ff, #5636d6); box-shadow: 0 8px 18px rgba(99,68,225,.3); overflow: hidden; flex: 0 0 auto; }
+.brand-mark i { position: absolute; display: block; border: 2.2px solid white; border-radius: 8px; width: 17px; height: 13px; transform: rotate(-10deg); }
+.brand-mark i:first-child { top: 9px; left: 7px; border-bottom-right-radius: 2px; }
+.brand-mark i:last-child { bottom: 7px; right: 6px; transform: rotate(10deg); border-top-left-radius: 2px; opacity: .9; }
+.brand-mark.small { width: 32px; height: 32px; border-radius: 10px; }
+.brand-mark.small i:first-child { top: 7px; left: 5px; }
+.brand-mark.small i:last-child { bottom: 5px; right: 4px; }
+
+.nav-label { margin: 0 10px 8px; font-size: 10px; letter-spacing: 1.6px; color: var(--faint); font-weight: 800; }
+.side-nav { display: grid; gap: 4px; }
+.nav-item { position: relative; width: 100%; border: 0; background: transparent; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 8px; padding: 10px 11px; color: var(--muted); border-radius: 12px; font-weight: 650; text-align: left; transition: .2s ease; }
+.nav-item:hover { color: var(--ink); background: var(--surface-2); transform: translateX(2px); }
+.nav-item.active { color: var(--purple); background: var(--purple-soft); }
+.nav-item.active::before { content:""; position: absolute; left: -16px; width: 3px; height: 22px; border-radius: 0 3px 3px 0; background: var(--purple); }
+.nav-icon { width: 26px; height: 26px; display: grid; place-items: center; font-size: 15px; font-weight: 800; }
+.nav-item kbd { color: var(--faint); font-family: inherit; font-size: 10px; font-weight: 700; border: 1px solid var(--line); border-radius: 6px; min-width: 20px; text-align: center; padding: 1px 4px; background: var(--surface-solid); }
+.nav-new { font-size: 8px; letter-spacing: .7px; padding: 3px 5px; border-radius: 5px; background: var(--ink); color: var(--surface-solid); }
+.sidebar-quest { margin: auto 5px 18px; border-radius: 17px; padding: 15px; border: 1px solid var(--line); background: linear-gradient(145deg, var(--surface-solid), var(--surface-2)); box-shadow: var(--shadow-sm); }
+.quest-top { display: flex; justify-content: space-between; font-size: 12px; font-weight: 750; }
+.quest-top strong { color: var(--purple); }
+.mini-progress { height: 6px; border-radius: 8px; background: var(--surface-3); overflow: hidden; margin: 11px 0 8px; }
+.mini-progress span { display:block; height:100%; background: linear-gradient(90deg,var(--purple),var(--purple-2)); border-radius: inherit; }
+.sidebar-quest p { color: var(--muted); font-size: 11px; margin: 0 0 12px; }
+.quest-gem { display:flex; align-items:center; gap:6px; font-weight:800; font-size:11px; color:var(--purple); }
+.sidebar-footer { padding-top: 14px; border-top: 1px solid var(--line); }
+.profile-mini { width:100%; display:grid; grid-template-columns: 34px 1fr auto; gap:10px; align-items:center; border:0; background:transparent; text-align:left; padding:8px; border-radius:12px; }
+.profile-mini:hover { background: var(--surface-2); }
+.avatar { width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#f6b96e,#f0876d);color:white;font-size:11px;font-weight:800; }
+.profile-mini > span:nth-child(2) { display:flex; flex-direction:column; line-height:1.2; }
+.profile-mini strong { font-size:12px; }
+.profile-mini small { color:var(--muted); font-size:10px; margin-top:3px; }
+
+.main { margin-left: var(--sidebar); min-height:100vh; }
+.topbar { height:var(--topbar); position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:flex-end; gap:18px; padding: 0 clamp(20px,4vw,52px); background: color-mix(in srgb, var(--bg) 84%, transparent); backdrop-filter: blur(18px); border-bottom: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
+.mobile-brand { display:none; border:0; background:transparent; align-items:center; gap:8px; }
+.global-search { margin-right:auto; border:1px solid var(--line); background: var(--surface); color:var(--muted); width:min(360px,32vw); height:40px; border-radius:12px; display:flex; align-items:center; gap:10px; padding:0 12px; text-align:left; box-shadow:0 1px 0 rgba(255,255,255,.5) inset; }
+.global-search:hover { border-color:var(--line-strong); background:var(--surface-solid); }
+.global-search span:first-child { font-size:20px; transform:rotate(-15deg); }
+.global-search span:nth-child(2) { flex:1; }
+kbd { font-family:inherit; }
+.global-search kbd { font-size:10px; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:var(--surface-2); color:var(--faint); }
+.top-actions { display:flex; gap:9px; align-items:center; }
+.top-pill { height:38px; padding:0 12px; display:flex; gap:7px; align-items:center; border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow-sm); font-size:12px; }
+.top-pill span { font-size:16px; }
+.xp-pill span { color:var(--purple); }
+.icon-button { width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:16px;position:relative; }
+.icon-button:hover { background:var(--surface-2); transform:translateY(-1px); }
+.notification-button i { position:absolute;right:7px;top:7px;width:6px;height:6px;background:var(--rose);border:2px solid var(--surface-solid);border-radius:50%; }
+
+.view-stack { padding: 14px clamp(20px,4vw,52px) 70px; max-width: 1540px; margin: 0 auto; }
+.view { display:none; animation:viewIn .35s ease both; }
+.view.active { display:block; }
+@keyframes viewIn { from{opacity:0;transform:translateY(7px)} to{opacity:1;transform:none} }
+.page-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:28px; margin: 30px 0 26px; }
+.page-heading.compact { margin-top:20px; }
+.page-heading h1 { font-size:clamp(32px,3.2vw,48px); line-height:1.06; letter-spacing:-1.7px; margin:4px 0 9px; }
+.page-heading p:not(.eyebrow) { color:var(--muted); max-width:680px; margin:0; font-size:16px; }
+.eyebrow { font-size:10px; font-weight:850; letter-spacing:1.7px; color:var(--purple); margin:0 0 7px; }
+.wave { display:inline-block; transform-origin:70% 80%; animation:wave 2.4s ease-in-out infinite; font-size:.8em; }
+@keyframes wave { 0%,60%,100%{transform:rotate(0)} 68%{transform:rotate(13deg)} 76%{transform:rotate(-8deg)} 84%{transform:rotate(10deg)} 92%{transform:rotate(-4deg)} }
+
+.button { border:0; border-radius:12px; min-height:42px; padding:0 16px; display:inline-flex; align-items:center; justify-content:center; gap:9px; font-weight:750; transition:.2s ease; white-space:nowrap; }
+.button:hover { transform:translateY(-2px); }
+.button.primary { background:linear-gradient(135deg,var(--purple),#7656ec); color:white; box-shadow:0 10px 22px rgba(102,70,229,.25); }
+.button.primary:hover { box-shadow:0 14px 30px rgba(102,70,229,.34); }
+.button.secondary { background:var(--surface-2); color:var(--ink); border:1px solid var(--line); }
+.button.subtle { background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow-sm); }
+.button.subtle span { color:var(--purple); font-size:11px; }
+.button.ink { background:var(--ink); color:var(--surface-solid); }
+.button.full { width:100%; }
+.button.disabled, .button:disabled { opacity:.45; cursor:not-allowed; transform:none; box-shadow:none; }
+.button-count { background:rgba(255,255,255,.2); border-radius:7px; min-width:25px; padding:2px 6px; font-size:11px; }
+.text-button { border:0;background:transparent;color:var(--purple);font-weight:750;padding:4px 0; }
+.text-button:hover { color:var(--purple-2); }
+
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-sm); }
+.dashboard-grid { display:grid; grid-template-columns:minmax(0,1.65fr) minmax(300px,.78fr); gap:20px; }
+.hero-card { min-height:430px; border-radius:var(--radius-lg); position:relative; overflow:hidden; display:grid; grid-template-columns:1.05fr .95fr; background:linear-gradient(135deg,#17182a 0%,#23213e 52%,#352965 100%); color:white; box-shadow:var(--shadow-md); }
+.hero-card::before { content:""; position:absolute; width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(139,110,255,.35),transparent 67%);right:-80px;top:-100px; }
+.hero-card::after { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.12) .7px,transparent .7px); background-size:20px 20px; mask-image:linear-gradient(90deg,transparent 20%,black 100%); opacity:.35; }
+.hero-copy { padding:clamp(30px,4vw,55px); align-self:center; position:relative; z-index:3; }
+.lesson-tag { display:inline-flex;align-items:center;gap:8px;color:#c8bdfc;font-weight:800;font-size:10px;letter-spacing:1.3px;margin-bottom:20px; }
+.pulse-dot { width:7px;height:7px;border-radius:50%;background:#73e5b7;box-shadow:0 0 0 5px rgba(115,229,183,.12);animation:pulse 2s infinite; }
+@keyframes pulse { 50%{box-shadow:0 0 0 9px rgba(115,229,183,0)} }
+.hero-copy h2 { font-size:clamp(30px,3.5vw,53px);line-height:1.02;letter-spacing:-1.7px;margin:0 0 18px; }
+.hero-copy h2 em { font-family:Georgia,serif;font-weight:500;color:#c6b6ff; }
+.hero-copy > p { color:#c5c5d7;max-width:480px;font-size:15px;margin:0 0 18px; }
+.hero-meta { display:flex;gap:8px;align-items:center;color:#9193aa;font-size:11px;margin-bottom:26px; }
+.hero-meta b { color:white; }
+.hero-start { min-width:170px; }
+.hero-visual { position:relative; min-height:100%; z-index:2; perspective:900px; }
+.orbit { position:absolute;border:1px solid rgba(255,255,255,.1);border-radius:50%; }
+.orbit-a { width:300px;height:300px;right:-20px;top:50px; }
+.orbit-b { width:210px;height:210px;right:30px;top:100px; }
+.sentence-card { position:absolute;width:210px;padding:17px;border-radius:17px;background:rgba(255,255,255,.95);color:#1e2030;box-shadow:0 24px 50px rgba(0,0,0,.24);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:5px; }
+.sentence-card small { font-size:8px;letter-spacing:1.2px;color:#8a8da3;font-weight:850; }
+.sentence-card span { align-self:flex-start;background:#eee9ff;color:#6445dc;padding:4px 8px;border-radius:7px;font-weight:850;font-size:12px; }
+.sentence-card b { font-size:13px; }
+.sentence-card i { font-style:normal;color:#7d7f91;font-size:9px; }
+.card-a { top:76px;left:10px;transform:rotate(-5deg) translateZ(12px);animation:floatA 5s ease-in-out infinite; }
+.card-b { top:224px;right:26px;transform:rotate(5deg);animation:floatB 6s ease-in-out infinite; }
+@keyframes floatA { 50%{transform:rotate(-3deg) translateY(-8px) translateZ(12px)} }
+@keyframes floatB { 50%{transform:rotate(3deg) translateY(8px)} }
+.floating-word { position:absolute;border:1px solid rgba(255,255,255,.18);color:#d8d2fa;background:rgba(255,255,255,.07);padding:7px 11px;border-radius:10px;font-weight:750;font-size:11px;backdrop-filter:blur(8px); }
+.fw-one { right:34px;top:78px;transform:rotate(8deg); }
+.fw-two { left:22px;bottom:67px;transform:rotate(-8deg); }
+.hero-progress { position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.09);z-index:4; }
+.hero-progress span { display:block;height:100%;background:linear-gradient(90deg,#8f75ff,#71d7c2); }
+
+.plan-card { padding:24px; display:flex; flex-direction:column; }
+.card-heading { display:flex;align-items:flex-start;justify-content:space-between;gap:15px; }
+.card-heading h3 { margin:0;font-size:20px;letter-spacing:-.5px; }
+.card-heading.slim h3 { font-size:18px; }
+.progress-ring { --size:58px; width:var(--size);height:var(--size);border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--purple) calc(var(--progress)*1%),var(--surface-3) 0);position:relative; }
+.progress-ring::after { content:"";position:absolute;inset:6px;border-radius:50%;background:var(--surface-solid); }
+.progress-ring span { position:relative;z-index:2;font-weight:850;font-size:15px; }
+.progress-ring small { color:var(--muted);font-size:9px; }
+.plan-list { display:grid;margin:18px 0 12px; }
+.plan-item { display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:11px;background:transparent;border:0;text-align:left;padding:14px 4px;border-bottom:1px solid var(--line); }
+.plan-item:hover { transform:translateX(3px); }
+.plan-item > span:nth-child(2) { display:flex;flex-direction:column; }
+.plan-item strong { font-size:13px; }
+.plan-item small { color:var(--muted);font-size:10px;margin-top:3px; }
+.plan-item b { color:var(--faint);font-size:10px; }
+.plan-check,.plan-icon { width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted);font-weight:800; }
+.plan-item.done .plan-check { background:var(--green-soft);color:var(--green); }
+.plan-item.done strong { color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-strong); }
+.plan-item.current .plan-icon { background:var(--purple-soft);color:var(--purple); }
+.plan-item.current b { color:var(--purple); }
+.plan-card .text-button { margin-top:auto;align-self:flex-start;font-size:12px; }
+
+.content-grid { display:grid;gap:20px;margin-top:20px; }
+.content-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.stat-card,.quick-card,.tutor-teaser { min-height:270px;padding:24px; }
+.status { padding:5px 8px;border-radius:8px;background:var(--surface-2);color:var(--muted);font-size:9px;font-weight:800; }
+.status.positive { background:var(--green-soft);color:var(--green); }
+.retention-bars { height:105px;display:flex;align-items:flex-end;gap:7px;margin:21px 0 7px;padding:0 4px;border-bottom:1px solid var(--line); }
+.retention-bars span { flex:1;min-width:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--purple) 55%,white),var(--purple));border-radius:5px 5px 2px 2px;opacity:.55;transition:.3s; }
+.retention-bars span:hover { opacity:1;transform:scaleY(1.04);transform-origin:bottom; }
+.retention-bars span.today { opacity:1;box-shadow:0 5px 15px rgba(102,70,229,.2); }
+.chart-labels { display:flex;justify-content:space-around;color:var(--faint);font-size:8px;margin-bottom:15px; }
+.retention-card > p { color:var(--muted);font-size:12px;margin:0; }
+.retention-card > p strong { color:var(--ink);font-size:18px; }
+.live-dot { color:var(--green);font-size:8px;letter-spacing:1px;font-weight:850;display:flex;align-items:center;gap:5px; }
+.live-dot::before { content:"";width:6px;height:6px;border-radius:50%;background:var(--green); }
+.quick-word { display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:19px 0;border-block:1px solid var(--line);margin:17px 0; }
+.quick-word > div { display:flex;flex-direction:column; }
+.quick-word strong { font-size:23px;letter-spacing:-.5px; }
+.quick-word small { color:var(--muted);margin-top:2px; }
+.article-chip { width:40px;height:40px;display:grid;place-items:center;border-radius:12px;font-size:10px;font-weight:850;color:white; }
+.article-chip.der { background:var(--der); }.article-chip.die{background:var(--die)}.article-chip.das{background:var(--das)}.article-chip.other{background:#7f8497}
+.sound-button { width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:var(--surface-2);display:grid;place-items:center;font-weight:850; }
+.sound-button:hover { background:var(--purple-soft);color:var(--purple); }
+.sound-button.labeled { width:auto;padding:0 12px;display:inline-flex;gap:8px;font-size:11px; }
+.quick-actions { display:flex;gap:8px; }
+.quick-actions .button { flex:1;font-size:11px; }
+.tutor-teaser { position:relative;overflow:hidden;background:radial-gradient(circle at 90% 0%,rgba(128,96,247,.2),transparent 36%),linear-gradient(140deg,var(--surface-solid),var(--purple-soft)); }
+.tutor-teaser h3 { font-size:24px;line-height:1.15;margin:9px 0;max-width:230px; }
+.tutor-teaser h3 em { color:var(--purple);font-family:Georgia,serif; }
+.tutor-teaser > p:not(.eyebrow) { color:var(--muted);font-size:12px;max-width:260px;margin:0 0 18px; }
+.tutor-orb { position:absolute;right:-25px;top:-25px;width:125px;height:125px;border-radius:50%;background:linear-gradient(145deg,#8f75ff,#4b2bb9);box-shadow:0 24px 45px rgba(88,54,197,.28);display:grid;place-items:center;color:white;font-size:30px; }
+.tutor-orb span { position:absolute;border:1px solid rgba(255,255,255,.28);border-radius:50%;animation:orb 5s linear infinite; }
+.tutor-orb span:first-child { inset:20px; }.tutor-orb span:nth-child(2){inset:34px;animation-direction:reverse;animation-duration:3s}
+@keyframes orb { to{transform:rotate(360deg)} }
+
+.topic-section { margin-top:40px; }
+.section-heading { display:flex;align-items:end;justify-content:space-between;margin-bottom:16px; }
+.section-heading h2 { margin:0;font-size:28px;letter-spacing:-.8px; }
+.topic-scroller { display:grid;grid-template-columns:repeat(6,minmax(165px,1fr));gap:12px;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:thin; }
+.topic-card { min-height:165px;border:1px solid var(--line);border-radius:18px;padding:17px;background:var(--surface);text-align:left;position:relative;overflow:hidden;transition:.25s ease;box-shadow:var(--shadow-sm); }
+.topic-card:hover { transform:translateY(-5px);box-shadow:var(--shadow-md); }
+.topic-card .topic-icon { width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--surface-2);font-size:21px;margin-bottom:25px; }
+.topic-card strong { display:block;font-size:14px;line-height:1.2; }
+.topic-card small { color:var(--muted);font-size:10px; }
+.topic-card i { position:absolute;width:70px;height:70px;border-radius:50%;right:-25px;bottom:-25px;background:var(--topic-color,var(--purple));opacity:.1; }
+
+.vocab-toolbar { padding:14px;display:grid;grid-template-columns:minmax(220px,1fr) auto 130px;gap:12px;align-items:center; }
+.search-field { height:42px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);display:flex;align-items:center;gap:9px;padding:0 11px; }
+.search-field span { font-size:19px;transform:rotate(-15deg);color:var(--muted); }
+.search-field input { border:0;outline:0;background:transparent;min-width:0;flex:1; }
+.search-field input::placeholder { color:var(--faint); }
+.search-field kbd { color:var(--faint);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:10px; }
+.segmented { display:flex;background:var(--surface-2);border-radius:11px;padding:4px;gap:2px; }
+.segmented button { border:0;background:transparent;padding:7px 10px;border-radius:8px;color:var(--muted);font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px; }
+.segmented button.active { background:var(--surface-solid);color:var(--ink);box-shadow:var(--shadow-sm); }
+.article-dot { width:7px;height:7px;border-radius:50%;display:inline-block;background:#8990a1; }
+.article-dot.der { background:var(--der); }.article-dot.die{background:var(--die)}.article-dot.das{background:var(--das)}
+select { min-height:42px;border:1px solid var(--line);border-radius:11px;background:var(--surface-2);padding:0 12px;outline:0; }
+.category-strip { display:flex;gap:8px;overflow-x:auto;padding:18px 0 8px;scrollbar-width:none; }
+.category-strip::-webkit-scrollbar { display:none; }
+.category-chip { flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--muted); }
+.category-chip:hover,.category-chip.active { color:var(--purple);border-color:color-mix(in srgb,var(--purple) 28%,var(--line));background:var(--purple-soft); }
+.category-chip small { opacity:.7; }
+.vocab-meta { display:flex;justify-content:space-between;align-items:center;margin:12px 2px; }
+.vocab-meta p { color:var(--muted);font-size:11px;margin:0; }
+.legend { display:flex;gap:15px;color:var(--faint);font-size:9px; }
+.legend span { display:flex;align-items:center;gap:5px; }
+.word-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px; }
+.word-card { position:relative;min-height:154px;padding:17px;border:1px solid var(--line);background:var(--surface);border-radius:17px;text-align:left;overflow:hidden;transition:.22s ease;box-shadow:0 1px 2px rgba(10,13,30,.02); }
+.word-card:hover { transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:color-mix(in srgb,var(--article-color) 35%,var(--line)); }
+.word-card::after { content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--article-color);opacity:.85; }
+.word-top { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:18px; }
+.word-unit { color:var(--faint);font-size:8px;font-weight:800;letter-spacing:.6px; }
+.word-sound { width:28px;height:28px;border:0;border-radius:8px;background:var(--surface-2);color:var(--muted); }
+.word-sound:hover { color:var(--purple); }
+.word-card h3 { font-size:18px;line-height:1.15;margin:0 0 5px;letter-spacing:-.3px; }
+.word-card .word-form { color:var(--faint);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:15px; }
+.word-card .word-meaning { color:var(--muted);font-size:11px;margin:14px 0 0;line-height:1.35; }
+.word-category { position:absolute;right:12px;bottom:10px;font-size:14px;opacity:.7; }
+.load-more { display:flex;margin:24px auto 0;min-width:180px; }
+.empty-state { text-align:center;padding:70px 20px; }
+.empty-state > span { width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:var(--surface-2);font-size:26px;margin:0 auto 14px;transform:rotate(-15deg); }
+.empty-state h3 { margin:0 0 5px; }.empty-state p{color:var(--muted);margin:0 0 16px;}
+
+.lesson-top { display:grid;grid-template-columns:40px 1fr 40px;align-items:center;gap:18px;margin:10px 0 25px; }
+.back-button { width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--surface); }
+.lesson-progress-wrap { display:grid;grid-template-columns:auto minmax(150px,460px) auto;justify-content:center;align-items:center;gap:12px;color:var(--muted);font-size:10px; }
+.lesson-progress-wrap strong { color:var(--purple); }
+.lesson-progress { height:6px;border-radius:9px;background:var(--surface-3);overflow:hidden; }
+.lesson-progress i { display:block;height:100%;background:linear-gradient(90deg,var(--purple),#8d75f3);border-radius:inherit; }
+.lesson-layout { display:grid;grid-template-columns:minmax(0,820px) minmax(250px,320px);gap:36px;justify-content:center; }
+.lesson-content { min-width:0; }
+.lesson-kicker { display:flex;gap:8px;color:var(--purple);font-size:9px;font-weight:850;letter-spacing:1px; }
+.lesson-kicker span { padding:5px 8px;border-radius:8px;background:var(--purple-soft); }
+.lesson-content > h1 { font-size:clamp(42px,5vw,67px);line-height:.98;letter-spacing:-2.5px;margin:22px 0 18px; }
+.lesson-content > h1 em { color:var(--purple);font-family:Georgia,serif;font-weight:500; }
+.lesson-lead { font-size:18px;color:var(--muted);max-width:700px;margin:0 0 28px; }
+.story-scene { min-height:330px;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(135deg,#dfeffc,#f5ecff);display:grid;grid-template-columns:.95fr 1.05fr;position:relative;border:1px solid rgba(86,102,156,.1); }
+html[data-theme="dark"] .story-scene { background:linear-gradient(135deg,#202f3c,#302844); }
+.scene-illustration { position:relative;overflow:hidden; }
+.sun { position:absolute;width:70px;height:70px;border-radius:50%;background:#ffd76b;left:46px;top:43px;box-shadow:0 0 0 14px rgba(255,215,107,.18); }
+.cloud { position:absolute;width:100px;height:30px;border-radius:30px;background:rgba(255,255,255,.78); }
+.cloud::before,.cloud::after { content:"";position:absolute;border-radius:50%;background:inherit; }
+.cloud::before{width:40px;height:40px;left:17px;top:-16px}.cloud::after{width:30px;height:30px;right:15px;top:-10px}
+.c1{left:150px;top:60px}.c2{left:30px;top:125px;transform:scale(.75)}
+.building { position:absolute;width:190px;height:145px;left:70px;bottom:0;background:#8b78d6;border-radius:22px 22px 0 0;box-shadow:inset -20px 0 rgba(0,0,0,.06);display:grid;grid-template-columns:repeat(2,35px);gap:18px;justify-content:center;padding-top:30px; }
+.building i { height:32px;background:#dff6ff;border-radius:5px;box-shadow:inset 0 -8px rgba(58,77,121,.08); }
+.person { position:absolute;right:20px;bottom:0;width:80px;height:150px; }
+.person span { position:absolute;top:0;left:20px;width:40px;height:40px;border-radius:50%;background:#a25f46; }
+.person b { position:absolute;top:36px;left:11px;width:58px;height:100px;border-radius:25px 25px 0 0;background:#ff7f6c; }
+.scene-dialogue { background:color-mix(in srgb,var(--surface-solid) 88%,transparent);margin:28px;border-radius:22px;padding:28px;align-self:center;box-shadow:var(--shadow-md);backdrop-filter:blur(14px); }
+.speaker { font-size:9px;font-weight:850;letter-spacing:1.4px;color:var(--purple); }
+.scene-dialogue > p { font-size:24px;line-height:1.35;margin:10px 0 16px; }
+.scene-dialogue mark { background:var(--purple-soft);color:var(--purple);padding:2px 5px;border-radius:5px; }
+.scene-dialogue strong { color:var(--rose); }
+.translation { display:flex;gap:5px;flex-wrap:wrap;color:var(--muted);font-size:10px;margin-bottom:18px; }
+.translation span { padding:4px 6px;border-radius:5px;background:var(--surface-2); }
+.concept-block,.practice-block { padding:55px 0 20px; }
+.concept-block h2,.practice-block h2 { font-size:34px;letter-spacing:-1px;margin:0 0 10px; }
+.concept-block > p:not(.eyebrow) { color:var(--muted);font-size:16px;max-width:740px; }
+.grammar-visual { margin:28px 0;display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center; }
+.clause { display:flex;flex-wrap:wrap;gap:7px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--surface);position:relative;min-height:125px;align-content:center; }
+.clause small { width:100%;color:var(--faint);font-size:8px;font-weight:850;letter-spacing:1px;margin-bottom:4px; }
+.token { background:var(--surface-2);border:1px solid var(--line);padding:8px 10px;border-radius:9px;font-weight:700;font-size:12px; }
+.token.connector { color:var(--purple);background:var(--purple-soft); }.token.verb{color:var(--rose);background:color-mix(in srgb,var(--rose) 10%,var(--surface-solid));}
+.clause i { position:absolute;right:18px;bottom:10px;color:var(--faint);font-size:9px;font-style:normal; }
+.comma { font-family:Georgia,serif;font-size:48px;color:var(--faint);align-self:end; }
+.memory-tip { display:flex;gap:13px;padding:17px;border-radius:14px;background:var(--green-soft);color:color-mix(in srgb,var(--green) 65%,var(--ink)); }
+.memory-tip span { font-size:22px; }.memory-tip p{margin:0;font-size:12px;}.memory-tip em{font-family:Georgia,serif;}
+.practice-heading { display:flex;justify-content:space-between;align-items:flex-start; }
+.question-count { color:var(--muted);font-size:10px;padding:5px 8px;border-radius:7px;background:var(--surface-2); }
+.prompt { color:var(--muted);font-size:16px;margin:16px 0; }
+.answer-zone { min-height:72px;border:2px dashed var(--line-strong);border-radius:16px;background:var(--surface);padding:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center; }
+.answer-placeholder { color:var(--faint);font-size:12px;margin:auto; }
+.word-bank { display:flex;gap:8px;flex-wrap:wrap;padding:18px 0; }
+.word-bank button,.answer-zone button { padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface-solid);font-weight:700;box-shadow:var(--shadow-sm); }
+.word-bank button:hover { transform:translateY(-2px);border-color:var(--purple); }
+.answer-zone button { background:var(--purple-soft);color:var(--purple);border-color:transparent; }
+.practice-actions { display:flex;justify-content:space-between; }
+.feedback { margin-top:16px;padding:14px 16px;border-radius:13px;font-size:12px; }
+.feedback.correct { background:var(--green-soft);color:var(--green); }.feedback.wrong{background:color-mix(in srgb,var(--rose) 11%,var(--surface-solid));color:var(--rose)}
+.lesson-aside { padding-top:88px; }
+.lesson-outline { padding:20px;position:sticky;top:90px; }
+.lesson-outline ol { list-style:none;padding:0;margin:14px 0 0;display:grid; }
+.lesson-outline li { display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line); }
+.lesson-outline li:last-child { border-bottom:0; }
+.lesson-outline li > span { width:27px;height:27px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted);font-size:10px;font-weight:800; }
+.lesson-outline li div { display:flex;flex-direction:column; }.lesson-outline strong{font-size:11px}.lesson-outline small{font-size:9px;color:var(--muted);margin-top:2px}
+.lesson-outline li.done > span { background:var(--green-soft);color:var(--green); }.lesson-outline li.active>span{background:var(--purple);color:white;box-shadow:0 5px 14px rgba(102,70,229,.25)}
+.teacher-note { display:flex;gap:12px;padding:17px;margin:14px 0; }
+.teacher-avatar { width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#8f76fa,#5534c8);color:white;display:grid;place-items:center;font-weight:850;flex:0 0 auto; }
+.teacher-note p:last-child { margin:0;color:var(--muted);font-size:10px; }
+
+.lab-level { border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:10px 14px;display:flex;flex-direction:column; }
+.lab-level span{color:var(--muted);font-size:9px}.lab-level strong{font-size:12px;margin-top:2px}
+.scenario-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+.scenario-card { border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);overflow:hidden;text-align:left;padding:0;transition:.25s;box-shadow:var(--shadow-sm); }
+.scenario-card:hover { transform:translateY(-5px);box-shadow:var(--shadow-md); }
+.scenario-art { height:150px;display:grid;place-items:center;font-size:52px;position:relative;overflow:hidden; }
+.scenario-art::after { content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.28);right:-40px;top:-50px; }
+.scenario-art.city{background:linear-gradient(135deg,#e5dcff,#c7b9ff)}.scenario-art.doctor{background:linear-gradient(135deg,#d7f4ef,#aee4d9)}.scenario-art.work{background:linear-gradient(135deg,#fce2ca,#f4be8e)}
+.scenario-card > div:last-child { padding:19px; }
+.difficulty { color:var(--purple);font-size:8px;font-weight:850;letter-spacing:1px; }
+.scenario-card h3 { font-size:20px;margin:7px 0 5px; }.scenario-card p{color:var(--muted);font-size:11px;min-height:35px;margin:0 0 16px}.scenario-footer{display:flex;justify-content:space-between;color:var(--muted);font-size:9px}.scenario-footer b{color:var(--purple)}
+.speaking-studio { margin-top:22px;padding:clamp(24px,4vw,42px);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:radial-gradient(circle at 86% 20%,rgba(112,87,238,.15),transparent 30%),var(--surface); }
+.studio-copy h2 { font-size:32px;letter-spacing:-1px;margin:0 0 8px; }.studio-copy>p:not(.eyebrow){color:var(--muted);max-width:520px}.prompt-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.prompt-chips button,.suggestion-row button{border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:7px 10px;font-size:9px;color:var(--muted)}.prompt-chips button:hover{border-color:var(--purple);color:var(--purple)}
+.recorder { min-height:270px;border-radius:24px;background:linear-gradient(150deg,#171827,#28213f);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden; }
+.recorder::before { content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(126,94,241,.35),transparent 65%); }
+.waveform { display:flex;align-items:center;gap:4px;height:56px;position:relative;z-index:2; }
+.waveform i { width:3px;height:10px;background:#9e8af5;border-radius:5px;transition:.2s; }
+.recorder.recording .waveform i { animation:waveform .7s ease-in-out infinite alternate; }
+.recorder.recording .waveform i:nth-child(2n){animation-delay:.1s}.recorder.recording .waveform i:nth-child(3n){animation-delay:.2s}.recorder.recording .waveform i:nth-child(4n){animation-delay:.3s}
+@keyframes waveform { to{height:48px;background:#75d7bd} }
+#record-button { width:68px;height:68px;border-radius:50%;border:7px solid rgba(255,255,255,.12);background:#fff;color:#ed5e70;display:grid;place-items:center;font-size:24px;position:relative;z-index:2;box-shadow:0 15px 30px rgba(0,0,0,.25); }
+.recorder.recording #record-button span { width:18px;height:18px;border-radius:5px;background:#ed5e70;font-size:0; }
+.recorder p { margin:14px 0 2px;font-weight:750;position:relative;z-index:2; }.recorder small{color:#9c9db0;font-size:8px;position:relative;z-index:2}
+
+.tutor-shell { min-height:calc(100vh - 120px);display:grid;grid-template-columns:270px 1fr;overflow:hidden; }
+.chat-sidebar { padding:24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px;background:var(--surface-2); }
+.chat-sidebar h2 { margin:0;font-size:27px; }.chat-sidebar>div:first-child>p:last-child{margin:2px 0 0;color:var(--muted);font-size:11px}
+.chat-history { display:grid;gap:5px; }.chat-history .nav-label{margin:0 7px 4px}.chat-history button{border:0;background:transparent;border-radius:10px;padding:10px;text-align:left;display:flex;flex-direction:column;gap:2px}.chat-history button:hover,.chat-history button.active{background:var(--surface-solid)}.chat-history span{font-size:11px;font-weight:700}.chat-history small{color:var(--muted);font-size:8px}
+.tutor-settings { margin-top:auto;display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-solid); }.tutor-settings>span{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--purple-soft);color:var(--purple)}.tutor-settings p{margin:0;display:flex;flex-direction:column}.tutor-settings strong{font-size:9px}.tutor-settings small{font-size:8px;color:var(--muted)}
+.chat-main { min-width:0;display:grid;grid-template-rows:auto 1fr auto auto auto;max-height:calc(100vh - 120px); }
+.chat-header { height:66px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 20px;gap:10px; }.chat-header>div:nth-child(2){display:flex;flex-direction:column;line-height:1.2}.chat-header strong{font-size:12px}.chat-header small{color:var(--muted);font-size:8px}.chat-header small i{display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin-right:4px}.chat-header .icon-button{margin-left:auto}
+.klara-avatar { width:38px;height:38px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#8b72f5,#5533c5);color:white;position:relative;box-shadow:0 8px 20px rgba(102,70,229,.25); }.klara-avatar i{position:absolute;inset:7px;border:1px solid rgba(255,255,255,.3);border-radius:50%}
+.chat-messages { overflow-y:auto;padding:30px clamp(22px,5vw,70px);display:flex;flex-direction:column;gap:22px; }
+.message { display:flex;gap:10px;max-width:750px; }.message.user{align-self:flex-end;background:var(--purple);color:white;padding:12px 16px;border-radius:17px 17px 4px 17px;max-width:560px}.message p{margin:0;line-height:1.6}.message-avatar{width:30px;height:30px;border-radius:10px;background:var(--purple-soft);color:var(--purple);display:grid;place-items:center;font-weight:850;flex:0 0 auto}.message-body{padding:0 0 0 2px;flex:1}.message-body>p{margin:0 0 13px}.message-body em{font-family:Georgia,serif;color:var(--purple)}
+.mini-rule { display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px;border-radius:13px;background:var(--surface-2);margin:14px 0;font-weight:750;font-size:11px}.mini-rule span{padding:7px 9px;border-radius:8px;background:var(--surface-solid)}.mini-rule .rule-prep{background:var(--purple-soft);color:var(--purple)}.mini-rule .rule-article{background:color-mix(in srgb,var(--rose) 11%,var(--surface-solid));color:var(--rose)}
+.tiny-practice { margin-top:16px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}.tiny-practice small{color:var(--purple);font-size:8px;font-weight:850;letter-spacing:1px}.tiny-practice p{margin:6px 0 12px}.tiny-practice div{display:flex;gap:7px}.tiny-practice button{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:7px 14px;font-weight:750}.tiny-practice button.correct{background:var(--green-soft);color:var(--green);border-color:transparent}.tiny-practice button.wrong{background:color-mix(in srgb,var(--rose) 11%,var(--surface-solid));color:var(--rose);border-color:transparent}
+.suggestion-row { padding:0 clamp(22px,5vw,70px) 10px;display:flex;gap:7px;overflow-x:auto; }.suggestion-row button{white-space:nowrap}.suggestion-row button:hover{color:var(--purple);border-color:var(--purple)}
+.chat-composer { margin:0 clamp(22px,5vw,70px);border:1px solid var(--line-strong);border-radius:17px;background:var(--surface-solid);display:grid;grid-template-columns:auto 1fr auto;align-items:end;padding:8px;box-shadow:var(--shadow-md)}.chat-composer textarea{border:0;outline:0;background:transparent;padding:8px;resize:none;max-height:120px}.attach-button,.send-button{width:36px;height:36px;border:0;border-radius:10px;background:var(--surface-2);font-weight:850}.send-button{background:var(--purple);color:white}.chat-disclaimer{text-align:center;color:var(--faint);font-size:8px;margin:7px 0 12px}
+.typing { display:flex;gap:4px;padding:10px 0; }.typing i{width:6px;height:6px;border-radius:50%;background:var(--faint);animation:typing 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}@keyframes typing{50%{transform:translateY(-4px);background:var(--purple)}}
+
+.metric-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:14px; }.metric{padding:21px;position:relative}.metric-icon{width:36px;height:36px;border-radius:11px;background:var(--purple-soft);color:var(--purple);display:grid;place-items:center;font-weight:850}.metric p{color:var(--muted);font-size:10px;margin:15px 0 2px}.metric h2{font-size:27px;margin:0;letter-spacing:-.7px}.metric small{color:var(--green);font-size:9px}
+.progress-main-grid { display:grid;grid-template-columns:1.7fr .8fr;gap:16px;margin-top:16px; }.activity-chart,.level-card{padding:24px;min-height:330px}.chart-stat{display:flex;flex-direction:column;text-align:right}.chart-stat strong{font-size:20px}.chart-stat small{color:var(--muted);font-size:8px}.activity-bars{height:185px;display:flex;align-items:flex-end;gap:5px;padding:20px 0 8px;border-bottom:1px solid var(--line)}.activity-bars span{flex:1;background:var(--purple);border-radius:4px 4px 1px 1px;min-width:4px;opacity:.38;transition:.2s}.activity-bars span:hover{opacity:1}.activity-bars span.current{opacity:1;background:linear-gradient(180deg,var(--purple-2),var(--purple))}.activity-axis{display:flex;justify-content:space-between;color:var(--faint);font-size:8px;margin-top:9px}
+.level-card{text-align:center;background:radial-gradient(circle at 50% 35%,rgba(102,70,229,.16),transparent 36%),var(--surface)}.level-orbit{width:130px;height:130px;border-radius:50%;margin:7px auto 12px;display:grid;place-items:center;background:conic-gradient(var(--purple) 44%,var(--surface-3) 0);position:relative}.level-orbit::after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--surface-solid)}.level-orbit div{position:relative;z-index:2;display:flex;flex-direction:column}.level-orbit span{font-size:32px;font-weight:850}.level-orbit small{color:var(--purple);font-weight:800}.level-card h3{margin:0 0 5px}.level-card>p:not(.eyebrow){color:var(--muted);font-size:10px;max-width:260px;margin:0 auto 20px}.level-path{display:flex;align-items:center;justify-content:center}.level-path span{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface-solid);font-size:9px;font-weight:800;color:var(--faint)}.level-path span.done{background:var(--green-soft);color:var(--green)}.level-path span.current{background:var(--purple);color:white;box-shadow:0 6px 15px rgba(102,70,229,.25)}.level-path i{width:25px;height:2px;background:var(--surface-3)}
+.skill-grid { display:grid;grid-template-columns:1.3fr .7fr;gap:16px;margin-top:16px}.skill-card,.focus-card{padding:24px}.skill-list{display:grid;gap:15px;margin-top:22px}.skill-list>div{display:grid;grid-template-columns:90px 1fr 26px;align-items:center;gap:10px;font-size:10px}.skill-list i{height:7px;border-radius:8px;background:var(--surface-3);overflow:hidden}.skill-list b{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--purple),var(--purple-2))}.skill-list strong{text-align:right;color:var(--muted)}.focus-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#171827,#2a2247);color:white}.focus-card .eyebrow{color:#b9a9ff}.focus-card h3{font-size:27px;line-height:1.1;margin:12px 0}.focus-card>p:not(.eyebrow){color:#b5b5c6;font-size:11px;max-width:350px;margin:0 0 23px}.focus-glow{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(130,97,245,.45),transparent 70%);right:-70px;top:-100px}
+
+.mobile-nav { display:none; }
+
+.modal { border:0;padding:0;background:var(--surface-solid);color:var(--ink);border-radius:24px;box-shadow:var(--shadow-lg);max-width:min(92vw,640px);width:100%; }
+.modal::backdrop { background:rgba(12,13,22,.62);backdrop-filter:blur(8px); }
+.modal[open] { animation:modalIn .25s ease both; }
+@keyframes modalIn{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}
+.modal-header { display:flex;align-items:flex-start;justify-content:space-between;padding:22px 24px 15px; }.modal-header h2{margin:0;font-size:24px}.close-button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);font-size:20px}.close-button:hover{background:var(--surface-3)}
+.flashcard-modal { padding-bottom:22px; }.sprint-progress{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:0 24px 15px;color:var(--muted);font-size:9px}.sprint-progress>div{height:5px;border-radius:6px;background:var(--surface-3);overflow:hidden}.sprint-progress i{display:block;height:100%;background:var(--purple);border-radius:inherit}.sprint-progress strong{color:var(--green)}
+.flashcard { width:calc(100% - 48px);height:330px;margin:0 24px;border:0;background:transparent;perspective:1000px;position:relative; }.flash-face{position:absolute;inset:0;border-radius:22px;backface-visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:35px;background:linear-gradient(145deg,var(--surface-2),var(--surface-solid));border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}.flash-face.back{transform:rotateY(180deg);background:radial-gradient(circle at 80% 10%,rgba(102,70,229,.14),transparent 35%),var(--surface-2)}.flashcard.flipped .front{transform:rotateY(180deg)}.flashcard.flipped .back{transform:rotateY(360deg)}.flash-article{padding:6px 10px;border-radius:9px;color:white;background:var(--der);font-size:10px;font-weight:850}.flash-face h2{font-size:39px;letter-spacing:-1px;margin:16px 0 3px;text-align:center}.flash-face>p:not(.flash-example){color:var(--muted);margin:0}.flash-face>small{color:var(--faint);position:absolute;bottom:22px}.flip-hint{position:absolute;right:18px;top:15px;color:var(--faint);font-size:17px}.flash-category{color:var(--purple);font-size:9px;font-weight:850;letter-spacing:.8px}.flash-example{color:var(--muted);font-family:Georgia,serif;font-style:italic;text-align:center;max-width:440px}.recall-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:16px 24px 0}.recall{border:1px solid var(--line);background:var(--surface-2);border-radius:13px;padding:11px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:8px;text-align:left}.recall>span{grid-row:1/3;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--surface-solid)}.recall strong{font-size:10px}.recall small{color:var(--muted);font-size:8px}.recall.again:hover{color:var(--rose);border-color:var(--rose)}.recall.hard:hover{color:var(--amber);border-color:var(--amber)}.recall.good:hover{color:var(--green);border-color:var(--green)}
+.challenge-modal{padding-bottom:24px}.challenge-prompt{color:var(--muted);padding:0 24px;margin:0 0 14px}.challenge-options{display:grid;gap:9px;padding:0 24px}.challenge-options button{border:1px solid var(--line);background:var(--surface-2);border-radius:13px;padding:14px;text-align:left;display:flex;align-items:center;gap:11px}.challenge-options button span{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--surface-solid);font-weight:850}.challenge-options button:hover{border-color:var(--purple)}.challenge-options button.correct{background:var(--green-soft);border-color:var(--green);color:var(--green)}.challenge-options button.wrong{background:color-mix(in srgb,var(--rose) 11%,var(--surface-solid));border-color:var(--rose);color:var(--rose)}.challenge-feedback{margin:14px 24px 0;padding:13px;border-radius:12px;background:var(--green-soft);color:var(--green);font-size:11px}
+.command-modal{max-width:min(92vw,680px);border-radius:18px;overflow:hidden}.command-search{height:62px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:0 16px;border-bottom:1px solid var(--line)}.command-search>span{font-size:22px;transform:rotate(-15deg);color:var(--muted)}.command-search input{border:0;outline:0;background:transparent;font-size:15px}.command-search kbd{font-size:9px;color:var(--faint);padding:3px 6px;border:1px solid var(--line);border-radius:6px}.command-results{max-height:410px;overflow-y:auto;padding:9px}.command-group-label{padding:8px 9px 5px;color:var(--faint);font-size:8px;font-weight:850;letter-spacing:1px}.command-result{width:100%;border:0;background:transparent;border-radius:10px;padding:10px;display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;text-align:left}.command-result:hover,.command-result.selected{background:var(--purple-soft)}.command-result>span:first-child{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2)}.command-result div{display:flex;flex-direction:column}.command-result strong{font-size:11px}.command-result small{color:var(--muted);font-size:8px}.command-result>small{font-size:8px;color:var(--faint)}.command-footer{border-top:1px solid var(--line);padding:9px 14px;display:flex;gap:16px;color:var(--faint);font-size:8px}.command-footer i{font-style:normal;color:var(--muted);border:1px solid var(--line);padding:1px 4px;border-radius:4px}
+.toast{position:fixed;right:25px;bottom:25px;z-index:1000;background:var(--ink);color:var(--surface-solid);border-radius:13px;padding:11px 15px;display:flex;align-items:center;gap:9px;box-shadow:var(--shadow-lg);transform:translateY(90px);opacity:0;transition:.3s}.toast.show{transform:none;opacity:1}.toast span{width:22px;height:22px;border-radius:7px;background:var(--green);color:white;display:grid;place-items:center;font-size:10px}.toast p{margin:0;font-size:11px;font-weight:700}
+
+@media (max-width: 1220px) {
+  :root { --sidebar: 214px; }
+  .content-grid.three { grid-template-columns:1fr 1fr; }
+  .tutor-teaser { grid-column:1/-1; min-height:210px; }
+  .word-grid { grid-template-columns:repeat(3,1fr); }
+  .topic-scroller { grid-template-columns:repeat(6,180px); }
+  .hero-card { grid-template-columns:1.1fr .9fr; }
+  .hero-visual { transform:scale(.9);transform-origin:center right; }
+}
+
+@media (max-width: 980px) {
+  :root { --sidebar: 82px; }
+  .sidebar { padding-inline:12px; }
+  .brand { padding-inline:10px;justify-content:center; }.brand>span:last-child{display:none}
+  .nav-label,.nav-item>span:nth-child(2),.nav-item kbd,.nav-new,.sidebar-quest,.profile-mini>span:not(.avatar){display:none}
+  .nav-item{grid-template-columns:1fr;justify-items:center;padding:10px}.nav-item.active::before{left:-12px}.sidebar-footer{display:grid;place-items:center}.profile-mini{display:block;width:auto}.avatar{width:38px;height:38px}
+  .dashboard-grid { grid-template-columns:1fr; }
+  .plan-card { min-height:350px; }
+  .hero-card { min-height:420px; }
+  .vocab-toolbar { grid-template-columns:1fr 1fr; }.vocab-toolbar .search-field{grid-column:1/-1}.word-grid{grid-template-columns:repeat(2,1fr)}
+  .lesson-layout { grid-template-columns:1fr; }.lesson-aside{padding-top:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.lesson-outline{position:static;grid-row:span 2}.teacher-note{margin:0}
+  .scenario-grid { grid-template-columns:1fr 1fr; }.scenario-card:last-child{grid-column:1/-1}.speaking-studio{grid-template-columns:1fr}
+  .tutor-shell { grid-template-columns:210px 1fr; }.chat-sidebar{padding:18px}
+  .metric-grid { grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width: 760px) {
+  :root { --topbar: 62px; }
+  body { padding-bottom:72px; }
+  .ambient { display:none; }
+  .sidebar { display:none; }
+  .main { margin-left:0; }
+  .topbar { padding:0 14px;justify-content:space-between; }
+  .mobile-brand { display:flex; }
+  .global-search { width:40px;height:40px;padding:0;justify-content:center;margin:0;order:2; }.global-search span:nth-child(2),.global-search kbd{display:none}.global-search span:first-child{font-size:21px}
+  .top-actions{order:3}.xp-pill,.notification-button{display:none}.streak-pill{height:36px;padding:0 9px}.icon-button{width:36px;height:36px}
+  .view-stack { padding: 5px 14px 30px; }
+  .page-heading,.page-heading.compact { align-items:flex-start;flex-direction:column;margin:22px 0 18px;gap:15px }.page-heading h1{font-size:35px}.page-heading p:not(.eyebrow){font-size:14px}.page-heading>.button{width:100%}
+  .dashboard-grid { gap:14px; }.hero-card{grid-template-columns:1fr;min-height:590px}.hero-copy{padding:30px 25px 20px}.hero-copy h2{font-size:38px}.hero-visual{min-height:235px;transform:scale(.9);transform-origin:center}.card-a{top:18px;left:20px}.card-b{top:125px;right:20px}.fw-one{top:15px}.fw-two{bottom:5px}
+  .content-grid.three { grid-template-columns:1fr;gap:14px }.tutor-teaser{grid-column:auto}.topic-section{margin-top:28px}.section-heading h2{font-size:24px}.topic-scroller{grid-template-columns:repeat(6,160px)}
+  .vocab-toolbar { grid-template-columns:1fr;padding:10px }.vocab-toolbar .search-field{grid-column:auto}.segmented{overflow-x:auto}.segmented button{flex:1}.word-grid{grid-template-columns:1fr 1fr;gap:9px}.word-card{min-height:145px;padding:14px}.word-card h3{font-size:16px}.legend{display:none}
+  .lesson-top{grid-template-columns:36px 1fr 36px}.lesson-progress-wrap{grid-template-columns:1fr auto}.lesson-progress-wrap>span{display:none}.lesson-content>h1{font-size:43px}.lesson-lead{font-size:15px}.story-scene{grid-template-columns:1fr;min-height:520px}.scene-illustration{min-height:220px}.scene-dialogue{margin:15px}.grammar-visual{grid-template-columns:1fr}.comma{display:none}.concept-block,.practice-block{padding-top:38px}.concept-block h2,.practice-block h2{font-size:28px}.lesson-aside{grid-template-columns:1fr}.lesson-outline{grid-row:auto}.teacher-note{margin:0}.lesson-aside>.button{margin-bottom:10px}
+  .scenario-grid { grid-template-columns:1fr; }.scenario-card:last-child{grid-column:auto}.speaking-studio{padding:20px}.recorder{min-height:250px}
+  .tutor-view{margin-inline:-14px}.tutor-shell{border-radius:0;border-inline:0;grid-template-columns:1fr;min-height:calc(100vh - 135px)}.chat-sidebar{display:none}.chat-main{max-height:calc(100vh - 135px)}.chat-messages{padding:22px 15px}.suggestion-row{padding-inline:15px}.chat-composer{margin-inline:15px}
+  .metric-grid{grid-template-columns:1fr 1fr;gap:9px}.metric{padding:15px}.progress-main-grid,.skill-grid{grid-template-columns:1fr}.activity-chart,.level-card{padding:18px}.skill-list>div{grid-template-columns:74px 1fr 25px}
+  .mobile-nav { position:fixed;left:8px;right:8px;bottom:8px;height:62px;z-index:80;display:grid;grid-template-columns:repeat(5,1fr);background:color-mix(in srgb,var(--surface-solid) 94%,transparent);border:1px solid var(--line);border-radius:18px;padding:6px;box-shadow:var(--shadow-lg);backdrop-filter:blur(20px);padding-bottom:max(6px,env(safe-area-inset-bottom)); }.mobile-nav button{border:0;background:transparent;border-radius:12px;color:var(--muted);font-size:8px;font-weight:750;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}.mobile-nav button span{font-size:15px}.mobile-nav button.active{background:var(--purple-soft);color:var(--purple)}
+  .modal { border-radius:22px 22px 0 0;max-width:100vw;width:100vw;margin:auto 0 0; }.flashcard{height:310px}.recall-actions{gap:6px}.command-modal{margin:auto;max-width:94vw;border-radius:18px}.toast{left:14px;right:14px;bottom:82px;justify-content:center}
+}
+
+@media (max-width: 440px) {
+  .word-grid{grid-template-columns:1fr}.word-card{min-height:132px}.metric-grid{grid-template-columns:1fr}.hero-card{min-height:625px}.sentence-card{width:185px}.card-a{left:4px}.card-b{right:2px}.quick-actions{flex-direction:column}.lesson-content>h1{font-size:38px}.flash-face h2{font-size:32px}.recall{grid-template-columns:1fr;text-align:center;justify-items:center}.recall>span{grid-row:auto}.recall small{display:none}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important; }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#dashboard" data-view-link="dashboard" aria-label="Klarweg home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+        <span><strong>Klarweg</strong><small>German B1</small></span>
+      </a>
+
+      <nav class="side-nav">
+        <p class="nav-label">Your course</p>
+        <button class="nav-item active" data-view="dashboard" aria-current="page">
+          <span class="nav-icon">⌂</span><span>Today</span><kbd>1</kbd>
+        </button>
+        <button class="nav-item" data-view="lesson">
+          <span class="nav-icon">✦</span><span>Learn</span><kbd>2</kbd>
+        </button>
+        <button class="nav-item" data-view="vocabulary">
+          <span class="nav-icon">Aa</span><span>Vocabulary</span><kbd>3</kbd>
+        </button>
+        <button class="nav-item" data-view="speaking">
+          <span class="nav-icon">◉</span><span>Speaking lab</span><kbd>4</kbd>
+        </button>
+        <button class="nav-item" data-view="tutor">
+          <span class="nav-icon">✧</span><span>AI tutor</span><span class="nav-new">NEW</span>
+        </button>
+        <button class="nav-item" data-view="progress">
+          <span class="nav-icon">↗</span><span>Progress</span><kbd>5</kbd>
+        </button>
+      </nav>
+
+      <div class="sidebar-quest">
+        <div class="quest-top"><span>Weekly quest</span><strong>4 / 7</strong></div>
+        <div class="mini-progress"><span style="width:57%"></span></div>
+        <p>Complete 3 more focused sessions</p>
+        <div class="quest-gem">◇ <span>+120 XP</span></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="profile-mini" data-view="progress">
+          <span class="avatar">AL</span>
+          <span><strong>Deutschlerner</strong><small>B1 · Level 14</small></span>
+          <span aria-hidden="true">···</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main" id="main-content">
+      <header class="topbar">
+        <button class="mobile-brand" data-view="dashboard" aria-label="Go to dashboard">
+          <span class="brand-mark small" aria-hidden="true"><i></i><i></i></span><strong>Klarweg</strong>
+        </button>
+        <button class="global-search" id="open-command" aria-label="Search lessons and vocabulary">
+          <span aria-hidden="true">⌕</span><span>Search anything</span><kbd>⌘ K</kbd>
+        </button>
+        <div class="top-actions">
+          <div class="top-pill streak-pill" title="12-day streak"><span>🔥</span><strong>12</strong></div>
+          <div class="top-pill xp-pill" title="2,480 experience points"><span>✦</span><strong>2,480</strong></div>
+          <button class="icon-button" id="theme-toggle" aria-label="Switch to dark mode"><span class="theme-icon">☾</span></button>
+          <button class="icon-button notification-button" aria-label="Notifications"><span>♢</span><i></i></button>
+        </div>
+      </header>
+
+      <div class="view-stack">
+        <section class="view active" data-view-panel="dashboard" aria-labelledby="dashboard-title">
+          <div class="page-heading compact">
+            <div>
+              <p class="eyebrow">SATURDAY · YOUR 18-MINUTE PLAN</p>
+              <h1 id="dashboard-title">Guten Tag <span class="wave">👋</span></h1>
+              <p>One focused session today keeps your German moving forward.</p>
+            </div>
+            <button class="button subtle" id="daily-challenge">Daily challenge <span>+40 XP</span></button>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="hero-card">
+              <div class="hero-copy">
+                <div class="lesson-tag"><span class="pulse-dot"></span> CONTINUE LESSON · 7 MIN</div>
+                <h2>Say more with<br><em>weil, obwohl</em> &amp; <em>trotzdem</em></h2>
+                <p>Connect ideas naturally and put the verb exactly where Germans expect it.</p>
+                <div class="hero-meta">
+                  <span><b>62%</b> complete</span><span>·</span><span>Grammar · B1.1</span>
+                </div>
+                <button class="button primary hero-start" data-view="lesson">Continue lesson <span>→</span></button>
+              </div>
+              <div class="hero-visual" aria-label="Visual showing German word order">
+                <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+                <div class="sentence-card card-a"><small>CAUSE</small><span>weil</span><b>ich heute arbeite</b><i>▾ verb at the end</i></div>
+                <div class="sentence-card card-b"><small>CONTRAST</small><span>trotzdem</span><b>gehe ich später aus</b><i>▴ verb stays second</i></div>
+                <div class="floating-word fw-one">obwohl</div><div class="floating-word fw-two">deshalb</div>
+              </div>
+              <div class="hero-progress"><span style="width:62%"></span></div>
+            </article>
+
+            <article class="plan-card card">
+              <div class="card-heading">
+                <div><p class="eyebrow">TODAY'S PLAN</p><h3>18 focused minutes</h3></div>
+                <div class="progress-ring" style="--progress: 44"><span>8<small>/18</small></span></div>
+              </div>
+              <div class="plan-list">
+                <button class="plan-item done" data-view="vocabulary"><span class="plan-check">✓</span><span><strong>Vocabulary warm-up</strong><small>12 words · completed</small></span><b>+20</b></button>
+                <button class="plan-item current" data-view="lesson"><span class="plan-icon">✦</span><span><strong>Connector word order</strong><small>Interactive lesson · 7 min</small></span><b>+35</b></button>
+                <button class="plan-item" data-view="speaking"><span class="plan-icon">◉</span><span><strong>At the Bürgeramt</strong><small>Speaking roleplay · 6 min</small></span><b>+30</b></button>
+              </div>
+              <button class="text-button" data-view="lesson">Adjust today's plan <span>→</span></button>
+            </article>
+          </div>
+
+          <div class="content-grid three">
+            <article class="card stat-card retention-card">
+              <div class="card-heading slim"><div><p class="eyebrow">MEMORY</p><h3>Words getting stronger</h3></div><span class="status positive">+8%</span></div>
+              <div class="retention-bars" aria-label="Memory strength chart">
+                <span style="height:32%"></span><span style="height:42%"></span><span style="height:38%"></span><span style="height:58%"></span><span style="height:64%"></span><span style="height:75%"></span><span class="today" style="height:86%"></span>
+              </div>
+              <div class="chart-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>Today</span></div>
+              <p><strong>86%</strong> predicted recall for reviewed words.</p>
+            </article>
+
+            <article class="card quick-card">
+              <div class="card-heading slim"><div><p class="eyebrow">QUICK PRACTICE</p><h3>Five-word sprint</h3></div><span class="live-dot">LIVE</span></div>
+              <div class="quick-word" id="quick-word">
+                <span class="article-chip der">der</span>
+                <div><strong>Auslöser</strong><small>trigger / cause</small></div>
+                <button class="sound-button" aria-label="Hear pronunciation" data-speak="der Auslöser">↗</button>
+              </div>
+              <div class="quick-actions"><button class="button secondary" id="shuffle-word">Another word</button><button class="button primary" id="start-flashcards">Start sprint</button></div>
+            </article>
+
+            <article class="card tutor-teaser">
+              <div class="tutor-orb" aria-hidden="true"><span></span><span></span><i>✧</i></div>
+              <p class="eyebrow">KLARA · AI TUTOR</p>
+              <h3>“Why is it <em>mit dem</em>?”</h3>
+              <p>Ask anything. Klara explains it simply, then gives you one tiny practice step.</p>
+              <button class="button ink" data-view="tutor">Ask Klara <span>→</span></button>
+            </article>
+          </div>
+
+          <section class="topic-section">
+            <div class="section-heading"><div><p class="eyebrow">EXPLORE YOUR B1 WORLD</p><h2>Learn by real-life theme</h2></div><button class="text-button" data-view="vocabulary">All 364 words <span>→</span></button></div>
+            <div class="topic-scroller" id="dashboard-topics"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view-panel="vocabulary" aria-labelledby="vocab-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">YOUR LIVING WORD BANK</p><h1 id="vocab-title">Vocabulary, organized by life</h1><p>364 B1 words from 13 themes. Search, listen, filter and remember.</p></div>
+            <button class="button primary" id="start-flashcards-top">Study due words <span class="button-count">18</span></button>
+          </div>
+
+          <div class="vocab-toolbar card">
+            <label class="search-field"><span>⌕</span><input id="vocab-search" type="search" placeholder="Search German or English…" autocomplete="off" /><kbd>/</kbd></label>
+            <div class="segmented" id="article-filter" aria-label="Filter by article">
+              <button class="active" data-article="all">All</button><button data-article="der"><i class="article-dot der"></i>der</button><button data-article="die"><i class="article-dot die"></i>die</button><button data-article="das"><i class="article-dot das"></i>das</button><button data-article="other">Other</button>
+            </div>
+            <select id="unit-filter" aria-label="Filter by unit"><option value="all">All units</option><option>E29</option><option>E31</option><option>E32</option><option>E33</option><option>E34</option></select>
+          </div>
+
+          <div class="category-strip" id="category-strip" aria-label="Vocabulary themes"></div>
+          <div class="vocab-meta"><p id="vocab-count">Showing 364 words</p><div class="legend"><span><i class="article-dot der"></i>masculine</span><span><i class="article-dot die"></i>feminine</span><span><i class="article-dot das"></i>neuter</span></div></div>
+          <div class="word-grid" id="word-grid"></div>
+          <div class="empty-state" id="vocab-empty" hidden><span>⌕</span><h3>No words found</h3><p>Try a broader search or clear a filter.</p><button class="button secondary" id="clear-filters">Clear filters</button></div>
+          <button class="button secondary load-more" id="load-more">Show more words</button>
+        </section>
+
+        <section class="view lesson-view" data-view-panel="lesson" aria-labelledby="lesson-title">
+          <div class="lesson-top">
+            <button class="back-button" data-view="dashboard" aria-label="Back to dashboard">←</button>
+            <div class="lesson-progress-wrap"><span>Lesson 3 of 8</span><div class="lesson-progress"><i style="width:62%"></i></div><strong>62%</strong></div>
+            <button class="icon-button" id="lesson-menu" aria-label="Lesson menu">···</button>
+          </div>
+
+          <div class="lesson-layout">
+            <article class="lesson-content">
+              <div class="lesson-kicker"><span>GRAMMAR · B1.1</span><span>7 min</span></div>
+              <h1 id="lesson-title">One idea. Two clauses.<br><em>A tiny verb adventure.</em></h1>
+              <p class="lesson-lead">German word order feels complicated until you see the two simple patterns underneath it.</p>
+
+              <div class="story-scene">
+                <div class="scene-illustration" aria-hidden="true">
+                  <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="building"><i></i><i></i><i></i><i></i></div><div class="person"><span></span><b></b></div>
+                </div>
+                <div class="scene-dialogue">
+                  <span class="speaker">Mila</span>
+                  <p><mark>Obwohl</mark> es regnet, <strong>fahre</strong> ich mit dem Fahrrad.</p>
+                  <div class="translation"><span>Although</span><span>it</span><span>rains,</span><span>I ride</span><span>my bike.</span></div>
+                  <button class="sound-button labeled" data-speak="Obwohl es regnet, fahre ich mit dem Fahrrad.">▶ Hear it naturally</button>
+                </div>
+              </div>
+
+              <section class="concept-block">
+                <p class="eyebrow">THE PATTERN</p>
+                <h2>The connector chooses the verb's seat</h2>
+                <p>With <strong>weil</strong> and <strong>obwohl</strong>, the conjugated verb travels to the end of its clause. In the main clause, it stays in position two.</p>
+                <div class="grammar-visual">
+                  <div class="clause subordinate"><small>DEPENDENT CLAUSE</small><span class="token connector">obwohl</span><span class="token">es</span><span class="token">heute</span><span class="token">stark</span><span class="token verb">regnet</span><i>verb → end</i></div>
+                  <div class="comma">,</div>
+                  <div class="clause main-clause"><small>MAIN CLAUSE</small><span class="token">fahre</span><span class="token verb">ich</span><span class="token">mit dem Fahrrad</span><i>verb → position 2</i></div>
+                </div>
+                <div class="memory-tip"><span>🧠</span><p><strong>Memory trick:</strong> <em>weil</em> and <em>obwohl</em> are “verb magnets.” They pull the verb to the clause's far edge.</p></div>
+              </section>
+
+              <section class="practice-block">
+                <div class="practice-heading"><div><p class="eyebrow">YOUR TURN</p><h2>Build the sentence</h2></div><span class="question-count">1 / 3</span></div>
+                <p class="prompt">“Although I am tired, I am still learning German.”</p>
+                <div class="answer-zone" id="answer-zone" aria-live="polite"><span class="answer-placeholder">Tap the words in the correct order</span></div>
+                <div class="word-bank" id="word-bank">
+                  <button>lerne</button><button>obwohl</button><button>ich</button><button>müde</button><button>bin</button><button>ich</button><button>weiter</button><button>Deutsch</button>
+                </div>
+                <div class="practice-actions"><button class="button secondary" id="reset-builder">Reset</button><button class="button primary disabled" id="check-builder" disabled>Check answer</button></div>
+                <div class="feedback" id="builder-feedback" hidden></div>
+              </section>
+            </article>
+
+            <aside class="lesson-aside">
+              <div class="lesson-outline card">
+                <p class="eyebrow">IN THIS LESSON</p>
+                <ol><li class="done"><span>✓</span><div><strong>Meet the pattern</strong><small>Story + intuition</small></div></li><li class="active"><span>2</span><div><strong>See the word order</strong><small>Visual explanation</small></div></li><li><span>3</span><div><strong>Build it yourself</strong><small>3 exercises</small></div></li><li><span>4</span><div><strong>Use it in speech</strong><small>Mini roleplay</small></div></li></ol>
+              </div>
+              <div class="teacher-note card"><div class="teacher-avatar">K</div><div><p class="eyebrow">KLARA'S NOTE</p><p>Don't translate word order from English. First choose the connector, then let the connector choose the structure.</p></div></div>
+              <button class="button secondary full" data-view="tutor">Ask a question</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="speaking" aria-labelledby="speaking-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">SPEAKING LAB</p><h1 id="speaking-title">Practice the moments that matter</h1><p>Low-pressure roleplays with instant, encouraging feedback.</p></div>
+            <div class="lab-level"><span>CEFR goal</span><strong>B1 · Independent speaker</strong></div>
+          </div>
+
+          <div class="scenario-grid">
+            <button class="scenario-card featured" data-scenario="Bürgeramt"><div class="scenario-art city"><span>🏛️</span></div><div><span class="difficulty">RECOMMENDED · 6 MIN</span><h3>At the Bürgeramt</h3><p>Register your new address and ask what documents you need.</p><div class="scenario-footer"><span>8 key phrases</span><b>Start →</b></div></div></button>
+            <button class="scenario-card" data-scenario="Doctor"><div class="scenario-art doctor"><span>🩺</span></div><div><span class="difficulty">HEALTH · 5 MIN</span><h3>Explain symptoms</h3><p>Describe how you feel and understand the doctor's advice.</p><div class="scenario-footer"><span>10 key phrases</span><b>Start →</b></div></div></button>
+            <button class="scenario-card" data-scenario="Work"><div class="scenario-art work"><span>💼</span></div><div><span class="difficulty">WORK · 7 MIN</span><h3>Share your opinion</h3><p>Agree, disagree and make a suggestion in a team meeting.</p><div class="scenario-footer"><span>12 key phrases</span><b>Start →</b></div></div></button>
+          </div>
+
+          <div class="speaking-studio card">
+            <div class="studio-copy"><p class="eyebrow">FREE SPEAK</p><h2>Tell me about your week</h2><p>Speak for 30–60 seconds. You will get feedback on clarity, grammar, vocabulary and pronunciation.</p><div class="prompt-chips"><button data-prompt="Was war diese Woche besonders schön?">What was especially nice?</button><button data-prompt="Was war schwierig?">What was difficult?</button><button data-prompt="Was planst du fürs Wochenende?">Weekend plans?</button></div></div>
+            <div class="recorder" id="recorder">
+              <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <button id="record-button" aria-label="Start recording"><span>●</span></button>
+              <p id="record-label">Tap to start speaking</p><small>Microphone stays on your device in this prototype</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="view tutor-view" data-view-panel="tutor" aria-labelledby="tutor-title">
+          <div class="tutor-shell card">
+            <aside class="chat-sidebar">
+              <div><p class="eyebrow">AI TUTOR</p><h2 id="tutor-title">Klara</h2><p>Your patient German coach.</p></div>
+              <button class="button primary full" id="new-chat">＋ New conversation</button>
+              <div class="chat-history"><p class="nav-label">RECENT</p><button class="active"><span>Why “mit dem”?</span><small>Today</small></button><button><span>Correct my email</span><small>Yesterday</small></button><button><span>Job interview practice</span><small>Friday</small></button></div>
+              <div class="tutor-settings"><span>✧</span><p><strong>Teaching style</strong><small>Simple · Visual · Encouraging</small></p></div>
+            </aside>
+            <section class="chat-main">
+              <header class="chat-header"><div class="klara-avatar"><i></i>✧</div><div><strong>Klara</strong><small><i></i> Ready to help</small></div><button class="icon-button">···</button></header>
+              <div class="chat-messages" id="chat-messages" aria-live="polite">
+                <div class="message user"><p>Why do Germans say <strong>mit dem Fahrrad</strong> and not <strong>mit das Fahrrad</strong>?</p></div>
+                <div class="message assistant">
+                  <div class="message-avatar">K</div>
+                  <div class="message-body"><p>Because <strong>mit</strong> always opens the <em>dative door</em>. When a neuter noun walks through that door, <strong>das</strong> changes to <strong>dem</strong>.</p>
+                    <div class="mini-rule"><span class="rule-prep">mit</span><span>＋</span><span class="rule-article">das → dem</span><span>＋</span><span>Fahrrad</span></div>
+                    <p>So: <strong>Ich fahre mit dem Fahrrad.</strong></p>
+                    <div class="tiny-practice"><small>TRY ONE</small><p>Complete: „Ich spreche mit ___ Kind.“</p><div><button data-answer="wrong">das</button><button data-answer="correct">dem</button><button data-answer="wrong">den</button></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="suggestion-row"><button>Explain it even more simply</button><button>Give me 3 examples</button><button>Practice dative with me</button></div>
+              <form class="chat-composer" id="chat-form"><button type="button" class="attach-button" aria-label="Attach content">＋</button><textarea id="chat-input" rows="1" placeholder="Ask about German, paste a sentence, or start a roleplay…"></textarea><button type="submit" class="send-button" aria-label="Send message">↑</button></form>
+              <p class="chat-disclaimer">Klara can make mistakes. Use feedback as a learning aid.</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="progress" aria-labelledby="progress-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">YOUR PROGRESS</p><h1 id="progress-title">Quiet progress, made visible</h1><p>What is improving, what needs attention and the smartest next step.</p></div>
+            <select aria-label="Progress time range"><option>Last 30 days</option><option>Last 7 days</option><option>All time</option></select>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric card"><span class="metric-icon">✦</span><p>Total XP</p><h2>2,480</h2><small>+420 this week</small></article>
+            <article class="metric card"><span class="metric-icon">◷</span><p>Learning time</p><h2>9h 42m</h2><small>+18% vs last month</small></article>
+            <article class="metric card"><span class="metric-icon">Aa</span><p>Words learned</p><h2>186</h2><small>51% of this collection</small></article>
+            <article class="metric card"><span class="metric-icon">🔥</span><p>Current streak</p><h2>12 days</h2><small>Personal best: 21</small></article>
+          </div>
+
+          <div class="progress-main-grid">
+            <article class="card activity-chart">
+              <div class="card-heading"><div><p class="eyebrow">CONSISTENCY</p><h3>Learning activity</h3></div><div class="chart-stat"><strong>18</strong><small>active days</small></div></div>
+              <div class="activity-bars" aria-label="Daily learning minutes over four weeks"></div>
+              <div class="activity-axis"><span>Jun 12</span><span>Jun 19</span><span>Jun 26</span><span>Jul 3</span><span>Today</span></div>
+            </article>
+            <article class="card level-card">
+              <p class="eyebrow">CEFR JOURNEY</p><div class="level-orbit"><div><span>B1</span><small>44%</small></div></div><h3>Building independence</h3><p>You can handle familiar situations. Your next leap is connecting ideas with more detail.</p><div class="level-path"><span class="done">A1</span><i></i><span class="done">A2</span><i></i><span class="current">B1</span><i></i><span>B2</span></div>
+            </article>
+          </div>
+
+          <div class="skill-grid">
+            <article class="card skill-card"><div class="card-heading slim"><div><p class="eyebrow">SKILL MAP</p><h3>Your B1 balance</h3></div><span class="status">Updated today</span></div><div class="skill-list"><div><span>Vocabulary</span><i><b style="width:72%"></b></i><strong>72</strong></div><div><span>Grammar</span><i><b style="width:64%"></b></i><strong>64</strong></div><div><span>Reading</span><i><b style="width:81%"></b></i><strong>81</strong></div><div><span>Listening</span><i><b style="width:58%"></b></i><strong>58</strong></div><div><span>Speaking</span><i><b style="width:52%"></b></i><strong>52</strong></div><div><span>Writing</span><i><b style="width:61%"></b></i><strong>61</strong></div></div></article>
+            <article class="card focus-card"><span class="focus-glow"></span><p class="eyebrow">SMART NEXT STEP</p><h3>Train listening connectors</h3><p>You recognize <em>obwohl</em> in text, but miss it at natural speaking speed. A 6-minute drill will close the gap.</p><button class="button primary" data-view="lesson">Start focused practice</button></article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="dashboard"><span>⌂</span>Today</button><button data-view="lesson"><span>✦</span>Learn</button><button data-view="vocabulary"><span>Aa</span>Words</button><button data-view="speaking"><span>◉</span>Speak</button><button data-view="tutor"><span>✧</span>Klara</button></nav>
+
+  <dialog class="modal flashcard-modal" id="flashcard-modal">
+    <div class="modal-header"><div><p class="eyebrow">FOCUSED REVIEW</p><h2>Five-word sprint</h2></div><button class="close-button" data-close="flashcard-modal" aria-label="Close">×</button></div>
+    <div class="sprint-progress"><span id="sprint-label">1 of 5</span><div><i id="sprint-progress" style="width:20%"></i></div><strong id="sprint-score">0 remembered</strong></div>
+    <button class="flashcard" id="flashcard" aria-label="Flip flashcard"><div class="flash-face front"><span class="flash-article" id="flash-article">der</span><h2 id="flash-word">Auslöser</h2><p id="flash-form">die Auslöser</p><small>Tap to reveal meaning</small><span class="flip-hint">↻</span></div><div class="flash-face back"><span class="flash-category" id="flash-category">😊 Feelings & personality</span><h2 id="flash-meaning">trigger / cause</h2><p class="flash-example" id="flash-example">Was war der Auslöser für den Konflikt?</p><button class="sound-button labeled" id="flash-speak" data-speak="der Auslöser">▶ Hear pronunciation</button><span class="flip-hint">↻</span></div></button>
+    <div class="recall-actions"><button class="recall again" data-recall="again"><span>↺</span><strong>Again</strong><small>1 min</small></button><button class="recall hard" data-recall="hard"><span>◌</span><strong>Hard</strong><small>1 day</small></button><button class="recall good" data-recall="good"><span>✓</span><strong>Got it</strong><small>4 days</small></button></div>
+  </dialog>
+
+  <dialog class="modal challenge-modal" id="challenge-modal">
+    <div class="modal-header"><div><p class="eyebrow">DAILY CHALLENGE · +40 XP</p><h2>Which sentence is correct?</h2></div><button class="close-button" data-close="challenge-modal" aria-label="Close">×</button></div>
+    <p class="challenge-prompt">Choose the natural German word order.</p>
+    <div class="challenge-options"><button data-correct="false"><span>A</span>Weil ich bin müde, gehe ich früh ins Bett.</button><button data-correct="true"><span>B</span>Weil ich müde bin, gehe ich früh ins Bett.</button><button data-correct="false"><span>C</span>Weil müde ich bin, ich gehe früh ins Bett.</button></div>
+    <div class="challenge-feedback" id="challenge-feedback" hidden></div>
+  </dialog>
+
+  <dialog class="modal command-modal" id="command-modal">
+    <div class="command-search"><span>⌕</span><input id="command-input" placeholder="Search words, lessons or actions…" autocomplete="off" /><kbd>ESC</kbd></div>
+    <div class="command-results" id="command-results"></div>
+    <div class="command-footer"><span><i>↑↓</i> navigate</span><span><i>↵</i> open</span><span><i>esc</i> close</span></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><p>Saved</p></div>
+
+  <script>
+window.KLARWEG_VOCAB = [{"term":"das Lehrerzimmer, die Lehrerzimmer","meaning":"teachers' lounge / staff room","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"das","headword":"das Lehrerzimmer","form":"die Lehrerzimmer","speak":"das Lehrerzimmer"},{"term":"das Zeugnis, die Zeugnisse","meaning":"report card / certificate","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"das","headword":"das Zeugnis","form":"die Zeugnisse","speak":"das Zeugnis"},{"term":"der Klassenausflug, die Klassenausflüge","meaning":"class trip / excursion","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"der","headword":"der Klassenausflug","form":"die Klassenausflüge","speak":"der Klassenausflug"},{"term":"der Schulhof, die Schulhöfe","meaning":"schoolyard","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"der","headword":"der Schulhof","form":"die Schulhöfe","speak":"der Schulhof"},{"term":"die Sporthalle, die Sporthallen","meaning":"sports hall / gym","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"die","headword":"die Sporthalle","form":"die Sporthallen","speak":"die Sporthalle"},{"term":"Nachhilfe geben","meaning":"to tutor / give private lessons","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"other","headword":"Nachhilfe geben","form":"","speak":"Nachhilfe geben"},{"term":"das Austauschjahr, die Austauschjahre","meaning":"exchange year","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"das","headword":"das Austauschjahr","form":"die Austauschjahre","speak":"das Austauschjahr"},{"term":"das Latein","meaning":"Latin (language)","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"das","headword":"das Latein","form":"","speak":"das Latein"},{"term":"das Wahlfach, die Wahlfächer","meaning":"elective subject","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"das","headword":"das Wahlfach","form":"die Wahlfächer","speak":"das Wahlfach"},{"term":"der Stundenplan, die Stundenpläne","meaning":"timetable / class schedule","unit":"E29","page":1,"category":"Schule & Bildungswege","article":"der","headword":"der Stundenplan","form":"die Stundenpläne","speak":"der Stundenplan"},{"term":"die Ethik","meaning":"ethics","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Ethik","form":"","speak":"die Ethik"},{"term":"die Matheaufgabe, die Matheaufgaben","meaning":"math problem / exercise","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Matheaufgabe","form":"die Matheaufgaben","speak":"die Matheaufgabe"},{"term":"die Physik","meaning":"physics","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Physik","form":"","speak":"die Physik"},{"term":"die Religion, die Religionen","meaning":"religion","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Religion","form":"die Religionen","speak":"die Religion"},{"term":"die Schulband, die Schulbands","meaning":"school band","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Schulband","form":"die Schulbands","speak":"die Schulband"},{"term":"die Schulkantine, die Schulkantinen","meaning":"school cafeteria","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Schulkantine","form":"die Schulkantinen","speak":"die Schulkantine"},{"term":"die Sprechstunde, die Sprechstunden","meaning":"oﬃce hours / consultation hour","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Sprechstunde","form":"die Sprechstunden","speak":"die Sprechstunde"},{"term":"der Aushang, die Aushänge","meaning":"notice (posted)","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Aushang","form":"die Aushänge","speak":"der Aushang"},{"term":"der Wettbewerb, die Wettbewerbe","meaning":"competition","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Wettbewerb","form":"die Wettbewerbe","speak":"der Wettbewerb"},{"term":"die AG (=Arbeitsgemeinschaft), die","meaning":"(school) club / study group AGs","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die AG (=Arbeitsgemeinschaft)","form":"die","speak":"die AG (=Arbeitsgemeinschaft)"},{"term":"die Leseliste, die Leselisten","meaning":"reading list","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Leseliste","form":"die Leselisten","speak":"die Leseliste"},{"term":"die Biologie (Bio)","meaning":"biology","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"die","headword":"die Biologie (Bio)","form":"","speak":"die Biologie (Bio)"},{"term":"das Fachabitur, die Fachabiture","meaning":"specialized/vocational baccalaureate","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"das","headword":"das Fachabitur","form":"die Fachabiture","speak":"das Fachabitur"},{"term":"das Schulsystem, die Schulsysteme","meaning":"school system","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"das","headword":"das Schulsystem","form":"die Schulsysteme","speak":"das Schulsystem"},{"term":"der Bildungsweg, die Bildungswege","meaning":"educational path","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Bildungsweg","form":"die Bildungswege","speak":"der Bildungsweg"},{"term":"der Realschulabschluss, die Realschulabschlüsse","meaning":"intermediate school-leaving certificate","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Realschulabschluss","form":"die Realschulabschlüsse","speak":"der Realschulabschluss"},{"term":"der Gymnasiast / die Gymnasiastin","meaning":"grammar-school (Gymnasium) student","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Gymnasiast / die Gymnasiastin","form":"","speak":"der Gymnasiast / die Gymnasiastin"},{"term":"der Hauptschüler / die Hauptschülerin","meaning":"secondary-modern-school student","unit":"E29","page":2,"category":"Schule & Bildungswege","article":"der","headword":"der Hauptschüler / die Hauptschülerin","form":"","speak":"der Hauptschüler / die Hauptschülerin"},{"term":"der Realschüler / die Realschülerin","meaning":"intermediate-secondary-school student","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"der","headword":"der Realschüler / die Realschülerin","form":"","speak":"der Realschüler / die Realschülerin"},{"term":"die Berufsschule, die Berufsschulen","meaning":"vocational school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Berufsschule","form":"die Berufsschulen","speak":"die Berufsschule"},{"term":"die Fachhochschule, die Fachhochschulen","meaning":"university of applied sciences","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Fachhochschule","form":"die Fachhochschulen","speak":"die Fachhochschule"},{"term":"die Fachoberschule, die Fachoberschulen","meaning":"technical secondary school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Fachoberschule","form":"die Fachoberschulen","speak":"die Fachoberschule"},{"term":"die Gesamtschule, die Gesamtschulen","meaning":"comprehensive school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Gesamtschule","form":"die Gesamtschulen","speak":"die Gesamtschule"},{"term":"die Grundschule, die Grundschulen","meaning":"primary school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Grundschule","form":"die Grundschulen","speak":"die Grundschule"},{"term":"die Hauptschule, die Hauptschulen","meaning":"secondary modern school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Hauptschule","form":"die Hauptschulen","speak":"die Hauptschule"},{"term":"die Realschule, die Realschulen","meaning":"intermediate secondary school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Realschule","form":"die Realschulen","speak":"die Realschule"},{"term":"die Regionalschule, die Regionalschulen","meaning":"regional school","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Regionalschule","form":"die Regionalschulen","speak":"die Regionalschule"},{"term":"die Schulzeit, die Schulzeiten","meaning":"school days / schooltime","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Schulzeit","form":"die Schulzeiten","speak":"die Schulzeit"},{"term":"das Kopiergerät, die Kopiergeräte","meaning":"photocopier","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"das","headword":"das Kopiergerät","form":"die Kopiergeräte","speak":"das Kopiergerät"},{"term":"das Nachmittagsangebot, die","meaning":"afternoon program/activity Nachmittagsangebote","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"das","headword":"das Nachmittagsangebot","form":"die","speak":"das Nachmittagsangebot"},{"term":"der Klassenraum, die Klassenräume","meaning":"classroom","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"der","headword":"der Klassenraum","form":"die Klassenräume","speak":"der Klassenraum"},{"term":"der Ordnungsdienst, die Ordnungsdienste","meaning":"order/monitor duty","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"der","headword":"der Ordnungsdienst","form":"die Ordnungsdienste","speak":"der Ordnungsdienst"},{"term":"die Elterninitiative, die Elterninitiativen","meaning":"parents' initiative/group","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"die","headword":"die Elterninitiative","form":"die Elterninitiativen","speak":"die Elterninitiative"},{"term":"mitarbeiten","meaning":"to participate / collaborate","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"other","headword":"mitarbeiten","form":"","speak":"mitarbeiten"},{"term":"das Klassenzimmer, die Klassenzimmer","meaning":"classroom","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"das","headword":"das Klassenzimmer","form":"die Klassenzimmer","speak":"das Klassenzimmer"},{"term":"der Test, die Tests","meaning":"test","unit":"E29","page":3,"category":"Schule & Bildungswege","article":"der","headword":"der Test","form":"die Tests","speak":"der Test"},{"term":"durchfallen","meaning":"to fail (an exam)","unit":"E29","page":4,"category":"Schule & Bildungswege","article":"other","headword":"durchfallen","form":"","speak":"durchfallen"},{"term":"das Pflichtfach, die Pflichtfächer","meaning":"compulsory subject","unit":"E29","page":4,"category":"Schule & Bildungswege","article":"das","headword":"das Pflichtfach","form":"die Pflichtfächer","speak":"das Pflichtfach"},{"term":"der Schulbeginn","meaning":"start of school","unit":"E29","page":4,"category":"Schule & Bildungswege","article":"der","headword":"der Schulbeginn","form":"","speak":"der Schulbeginn"},{"term":"der Unterricht","meaning":"lessons / instruction","unit":"E29","page":4,"category":"Schule & Bildungswege","article":"der","headword":"der Unterricht","form":"","speak":"der Unterricht"},{"term":"das Lieblingsfach, die Lieblingsfächer","meaning":"favorite subject","unit":"E29","page":4,"category":"Schule & Bildungswege","article":"das","headword":"das Lieblingsfach","form":"die Lieblingsfächer","speak":"das Lieblingsfach"},{"term":"die Schulsachen (Pl.) Berufe","meaning":"school things / supplies","unit":"E32","page":4,"category":"Schule & Bildungswege","article":"die","headword":"die Schulsachen (Pl.) Berufe","form":"","speak":"die Schulsachen (Pl.) Berufe"},{"term":"12 Wörter der (Schul-)Sozialarbeiter / die","meaning":"(school) social worker (Schul-)Sozialarbeiterin","unit":"E29","page":4,"category":"Berufe","article":"other","headword":"12 Wörter der (Schul-)Sozialarbeiter / die","form":"","speak":"12 Wörter der (Schul-)Sozialarbeiter / die"},{"term":"der Ausbildungsplatz, die Ausbildungsplätze","meaning":"apprenticeship position","unit":"E29","page":4,"category":"Berufe","article":"der","headword":"der Ausbildungsplatz","form":"die Ausbildungsplätze","speak":"der Ausbildungsplatz"},{"term":"der Hausmeister / die Hausmeisterin","meaning":"caretaker / janitor","unit":"E29","page":4,"category":"Berufe","article":"der","headword":"der Hausmeister / die Hausmeisterin","form":"","speak":"der Hausmeister / die Hausmeisterin"},{"term":"der Schlosser / die Schlosserin","meaning":"locksmith","unit":"E29","page":4,"category":"Berufe","article":"der","headword":"der Schlosser / die Schlosserin","form":"","speak":"der Schlosser / die Schlosserin"},{"term":"der Streitschlichter / die Streitschlichterin","meaning":"mediator / conflict resolver","unit":"E29","page":4,"category":"Berufe","article":"der","headword":"der Streitschlichter / die Streitschlichterin","form":"","speak":"der Streitschlichter / die Streitschlichterin"},{"term":"die Berufswahl","meaning":"career choice","unit":"E29","page":4,"category":"Berufe","article":"die","headword":"die Berufswahl","form":"","speak":"die Berufswahl"},{"term":"der Naturforscher / die Naturforscherin","meaning":"naturalist / natural scientist","unit":"E31","page":4,"category":"Berufe","article":"der","headword":"der Naturforscher / die Naturforscherin","form":"","speak":"der Naturforscher / die Naturforscherin"},{"term":"das Berufsleben, die Berufsleben","meaning":"working life","unit":"E32","page":4,"category":"Berufe","article":"das","headword":"das Berufsleben","form":"die Berufsleben","speak":"das Berufsleben"},{"term":"die Rente, die Renten","meaning":"pension","unit":"E32","page":4,"category":"Berufe","article":"die","headword":"die Rente","form":"die Renten","speak":"die Rente"},{"term":"der Beamte / die Beamtin","meaning":"civil servant / oﬃcial","unit":"E34","page":4,"category":"Berufe","article":"der","headword":"der Beamte / die Beamtin","form":"","speak":"der Beamte / die Beamtin"},{"term":"der Moderator / die Moderatorin","meaning":"moderator / host","unit":"E34","page":5,"category":"Berufe","article":"der","headword":"der Moderator / die Moderatorin","form":"","speak":"der Moderator / die Moderatorin"},{"term":"der Organisator / die Organisatorin Freizeit & Reisen","meaning":"organizer","unit":"E34","page":5,"category":"Berufe","article":"der","headword":"der Organisator / die Organisatorin Freizeit & Reisen","form":"","speak":"der Organisator / die Organisatorin Freizeit & Reisen"},{"term":"11 Wörter der Comic, die Comics","meaning":"comic book","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"other","headword":"11 Wörter der Comic","form":"die Comics","speak":"11 Wörter der Comic"},{"term":"der Schlafsack, die Schlafsäcke","meaning":"sleeping bag","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"der","headword":"der Schlafsack","form":"die Schlafsäcke","speak":"der Schlafsack"},{"term":"der Trickfilm, die Trickfilme","meaning":"animated film / cartoon","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"der","headword":"der Trickfilm","form":"die Trickfilme","speak":"der Trickfilm"},{"term":"das Porträt, die Porträts","meaning":"portrait","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Porträt","form":"die Porträts","speak":"das Porträt"},{"term":"das Boot, die Boote","meaning":"boat","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Boot","form":"die Boote","speak":"das Boot"},{"term":"das Hotelzimmer, die Hotelzimmer","meaning":"hotel room","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Hotelzimmer","form":"die Hotelzimmer","speak":"das Hotelzimmer"},{"term":"das Zelt, die Zelte","meaning":"tent","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Zelt","form":"die Zelte","speak":"das Zelt"},{"term":"das Zugticket, die Zugtickets","meaning":"train ticket","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Zugticket","form":"die Zugtickets","speak":"das Zugticket"},{"term":"faulenzen","meaning":"to laze around","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"other","headword":"faulenzen","form":"","speak":"faulenzen"},{"term":"das Musikinstrument, die Musikinstrumente","meaning":"musical instrument","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Musikinstrument","form":"die Musikinstrumente","speak":"das Musikinstrument"},{"term":"das Schach Zeit","meaning":"chess","unit":"E29","page":5,"category":"Freizeit & Reisen","article":"das","headword":"das Schach Zeit","form":"","speak":"das Schach Zeit"},{"term":"12 Wörter zweiwöchig","meaning":"two-week (adj.)","unit":"E29","page":5,"category":"Zeit","article":"other","headword":"12 Wörter zweiwöchig","form":"","speak":"12 Wörter zweiwöchig"},{"term":"frei haben","meaning":"to have (time) off / be free","unit":"E29","page":6,"category":"Zeit","article":"other","headword":"frei haben","form":"","speak":"frei haben"},{"term":"das Vergangene","meaning":"the past (as a thing)","unit":"E31","page":6,"category":"Zeit","article":"das","headword":"das Vergangene","form":"","speak":"das Vergangene"},{"term":"die Vergangenheit","meaning":"the past","unit":"E31","page":6,"category":"Zeit","article":"die","headword":"die Vergangenheit","form":"","speak":"die Vergangenheit"},{"term":"der Lebensabschnitt, die Lebensabschnitte","meaning":"phase of life","unit":"E32","page":6,"category":"Zeit","article":"der","headword":"der Lebensabschnitt","form":"die Lebensabschnitte","speak":"der Lebensabschnitt"},{"term":"der Augenblick, die Augenblicke","meaning":"moment","unit":"E32","page":6,"category":"Zeit","article":"der","headword":"der Augenblick","form":"die Augenblicke","speak":"der Augenblick"},{"term":"mittlere","meaning":"middle / average","unit":"E32","page":6,"category":"Zeit","article":"other","headword":"mittlere","form":"","speak":"mittlere"},{"term":"neuerdings","meaning":"recently / lately","unit":"E32","page":6,"category":"Zeit","article":"other","headword":"neuerdings","form":"","speak":"neuerdings"},{"term":"nun","meaning":"now","unit":"E32","page":6,"category":"Zeit","article":"other","headword":"nun","form":"","speak":"nun"},{"term":"halbtags","meaning":"part-time (half-day)","unit":"E32","page":6,"category":"Zeit","article":"other","headword":"halbtags","form":"","speak":"halbtags"},{"term":"zeitlich","meaning":"temporal / time-related","unit":"E33","page":6,"category":"Zeit","article":"other","headword":"zeitlich","form":"","speak":"zeitlich"},{"term":"der Abschnitt, die Abschnitte Gefühle & Persönlichkeit","meaning":"section","unit":"E33","page":6,"category":"Zeit","article":"der","headword":"der Abschnitt","form":"die Abschnitte Gefühle & Persönlichkeit","speak":"der Abschnitt"},{"term":"39 Wörter schulmüde","meaning":"tired of school","unit":"E29","page":6,"category":"Gefühle & Persönlichkeit","article":"other","headword":"39 Wörter schulmüde","form":"","speak":"39 Wörter schulmüde"},{"term":"menschlich","meaning":"human / humane","unit":"E31","page":6,"category":"Gefühle & Persönlichkeit","article":"other","headword":"menschlich","form":"","speak":"menschlich"},{"term":"das Benehmen","meaning":"behavior / manners","unit":"E31","page":6,"category":"Gefühle & Persönlichkeit","article":"das","headword":"das Benehmen","form":"","speak":"das Benehmen"},{"term":"der Auslöser, die Auslöser","meaning":"trigger / cause","unit":"E31","page":6,"category":"Gefühle & Persönlichkeit","article":"der","headword":"der Auslöser","form":"die Auslöser","speak":"der Auslöser"},{"term":"die Belastung, die Belastungen","meaning":"burden / stress","unit":"E31","page":6,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Belastung","form":"die Belastungen","speak":"die Belastung"},{"term":"die Unsicherheit, die Unsicherheiten","meaning":"uncertainty / insecurity","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Unsicherheit","form":"die Unsicherheiten","speak":"die Unsicherheit"},{"term":"die Verlegenheit","meaning":"embarrassment","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Verlegenheit","form":"","speak":"die Verlegenheit"},{"term":"liebenswert","meaning":"lovable","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"liebenswert","form":"","speak":"liebenswert"},{"term":"(sich) schämen","meaning":"to be ashamed","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"(sich) schämen","form":"","speak":"(sich) schämen"},{"term":"das Rotwerden","meaning":"blushing","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"das","headword":"das Rotwerden","form":"","speak":"das Rotwerden"},{"term":"die Reaktion, die Reaktionen","meaning":"reaction","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Reaktion","form":"die Reaktionen","speak":"die Reaktion"},{"term":"das Pech","meaning":"bad luck","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"das","headword":"das Pech","form":"","speak":"das Pech"},{"term":"die Decke, die Decken (jemandem fällt die Decke auf den Kopf)","meaning":"ceiling (idiom: to feel trapped / go stir-crazy)","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Decke","form":"die Decken (jemandem fällt die Decke auf den Kopf)","speak":"die Decke"},{"term":"verunsichern","meaning":"to make someone uncertain / unsettle","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"verunsichern","form":"","speak":"verunsichern"},{"term":"schlimm","meaning":"bad / serious","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"schlimm","form":"","speak":"schlimm"},{"term":"angenehm","meaning":"pleasant","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"angenehm","form":"","speak":"angenehm"},{"term":"empfinden","meaning":"to feel / perceive","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"empfinden","form":"","speak":"empfinden"},{"term":"oberflächlich","meaning":"superficial","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"oberflächlich","form":"","speak":"oberflächlich"},{"term":"unabhängig","meaning":"independent","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"unabhängig","form":"","speak":"unabhängig"},{"term":"aufrichtig","meaning":"sincere","unit":"E31","page":7,"category":"Gefühle & Persönlichkeit","article":"other","headword":"aufrichtig","form":"","speak":"aufrichtig"},{"term":"der Aussetzer, die Aussetzer","meaning":"lapse / blackout","unit":"E32","page":7,"category":"Gefühle & Persönlichkeit","article":"der","headword":"der Aussetzer","form":"die Aussetzer","speak":"der Aussetzer"},{"term":"die Ungeduld","meaning":"impatience","unit":"E32","page":7,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Ungeduld","form":"","speak":"die Ungeduld"},{"term":"einfühlsam","meaning":"empathetic / sensitive","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"einfühlsam","form":"","speak":"einfühlsam"},{"term":"ungeduldig","meaning":"impatient","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"ungeduldig","form":"","speak":"ungeduldig"},{"term":"vergesslich","meaning":"forgetful","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"vergesslich","form":"","speak":"vergesslich"},{"term":"fürchten","meaning":"to fear","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"fürchten","form":"","speak":"fürchten"},{"term":"seufzen","meaning":"to sigh","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"seufzen","form":"","speak":"seufzen"},{"term":"vorwurfsvoll","meaning":"reproachful","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"vorwurfsvoll","form":"","speak":"vorwurfsvoll"},{"term":"das Temperament, die Temperamente","meaning":"temperament","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"das","headword":"das Temperament","form":"die Temperamente","speak":"das Temperament"},{"term":"der Charakter, die Charaktere","meaning":"character","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"der","headword":"der Charakter","form":"die Charaktere","speak":"der Charakter"},{"term":"bestürzt sein über etwas","meaning":"to be dismayed about something","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"bestürzt sein über etwas","form":"","speak":"bestürzt sein über etwas"},{"term":"die Geduld","meaning":"patience","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Geduld","form":"","speak":"die Geduld"},{"term":"die Rage (jemanden in Rage bringen)","meaning":"rage (to make someone furious)","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Rage (jemanden in Rage bringen)","form":"","speak":"die Rage (jemanden in Rage bringen)"},{"term":"wohltuend","meaning":"soothing / pleasant","unit":"E32","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"wohltuend","form":"","speak":"wohltuend"},{"term":"träumen","meaning":"to dream","unit":"E33","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"träumen","form":"","speak":"träumen"},{"term":"ernsthaft","meaning":"serious(ly)","unit":"E33","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"ernsthaft","form":"","speak":"ernsthaft"},{"term":"tolerant","meaning":"tolerant","unit":"E33","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"tolerant","form":"","speak":"tolerant"},{"term":"die Originalität, die Originalitäten","meaning":"originality","unit":"E34","page":8,"category":"Gefühle & Persönlichkeit","article":"die","headword":"die Originalität","form":"die Originalitäten","speak":"die Originalität"},{"term":"kurios","meaning":"curious / odd","unit":"E34","page":8,"category":"Gefühle & Persönlichkeit","article":"other","headword":"kurios","form":"","speak":"kurios"},{"term":"der Konflikt, die Konflikte","meaning":"conflict","unit":"E29","page":9,"category":"Kommunikation & Miteinander","article":"der","headword":"der Konflikt","form":"die Konflikte","speak":"der Konflikt"},{"term":"die Verhaltensregel, die Verhaltensregeln","meaning":"rule of conduct","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Verhaltensregel","form":"die Verhaltensregeln","speak":"die Verhaltensregel"},{"term":"anlächeln","meaning":"to smile at","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"other","headword":"anlächeln","form":"","speak":"anlächeln"},{"term":"die Ausdrucksform, die Ausdrucksformen","meaning":"form of expression","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Ausdrucksform","form":"die Ausdrucksformen","speak":"die Ausdrucksform"},{"term":"kommentieren","meaning":"to comment","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"other","headword":"kommentieren","form":"","speak":"kommentieren"},{"term":"das Missverständnis, die Missverständnisse","meaning":"misunderstanding","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"das","headword":"das Missverständnis","form":"die Missverständnisse","speak":"das Missverständnis"},{"term":"der Umgang, die Umgänge","meaning":"dealing with / interaction","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"der","headword":"der Umgang","form":"die Umgänge","speak":"der Umgang"},{"term":"die Öffentlichkeit, die Öffentlichkeiten","meaning":"the public","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Öffentlichkeit","form":"die Öffentlichkeiten","speak":"die Öffentlichkeit"},{"term":"wortlos","meaning":"without a word","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"other","headword":"wortlos","form":"","speak":"wortlos"},{"term":"das Kompliment, die Komplimente","meaning":"compliment","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"das","headword":"das Kompliment","form":"die Komplimente","speak":"das Kompliment"},{"term":"das Lob (meist nur Sg.)","meaning":"praise","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"das","headword":"das Lob (meist nur Sg.)","form":"","speak":"das Lob (meist nur Sg.)"},{"term":"der Abstand, die Abstände","meaning":"distance","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"der","headword":"der Abstand","form":"die Abstände","speak":"der Abstand"},{"term":"der Gesprächspartner / die Gesprächspartnerin","meaning":"conversation partner","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"der","headword":"der Gesprächspartner / die Gesprächspartnerin","form":"","speak":"der Gesprächspartner / die Gesprächspartnerin"},{"term":"die Geschäftsverhandlung, die","meaning":"business negotiation Geschäftsverhandlungen","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Geschäftsverhandlung","form":"die","speak":"die Geschäftsverhandlung"},{"term":"die Gesellschaft, die Gesellschaften","meaning":"society","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Gesellschaft","form":"die Gesellschaften","speak":"die Gesellschaft"},{"term":"die Kommunikationsregel, die","meaning":"communication rule Kommunikationsregeln","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Kommunikationsregel","form":"die","speak":"die Kommunikationsregel"},{"term":"die Sitte, die Sitten","meaning":"custom","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"die","headword":"die Sitte","form":"die Sitten","speak":"die Sitte"},{"term":"indirekt","meaning":"indirect","unit":"E31","page":9,"category":"Kommunikation & Miteinander","article":"other","headword":"indirekt","form":"","speak":"indirekt"},{"term":"loben","meaning":"to praise","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"loben","form":"","speak":"loben"},{"term":"plaudern","meaning":"to chat","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"plaudern","form":"","speak":"plaudern"},{"term":"überzeugen","meaning":"to convince","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"überzeugen","form":"","speak":"überzeugen"},{"term":"wirken","meaning":"to seem / have an effect","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"wirken","form":"","speak":"wirken"},{"term":"zusammenwachsen","meaning":"to grow together","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"zusammenwachsen","form":"","speak":"zusammenwachsen"},{"term":"die Verzeihung","meaning":"forgiveness / pardon","unit":"E31","page":10,"category":"Kommunikation & Miteinander","article":"die","headword":"die Verzeihung","form":"","speak":"die Verzeihung"},{"term":"versprechen","meaning":"to promise","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"versprechen","form":"","speak":"versprechen"},{"term":"der Vorwurf, die Vorwürfe","meaning":"reproach","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"der","headword":"der Vorwurf","form":"die Vorwürfe","speak":"der Vorwurf"},{"term":"das Contra-Argument, die Contra-Argumente","meaning":"counter-argument","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"das","headword":"das Contra-Argument","form":"die Contra-Argumente","speak":"das Contra-Argument"},{"term":"das Pro-Argument, die Pro-Argumente","meaning":"argument in favor","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"das","headword":"das Pro-Argument","form":"die Pro-Argumente","speak":"das Pro-Argument"},{"term":"der Vorschlag, die Vorschläge","meaning":"suggestion","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"der","headword":"der Vorschlag","form":"die Vorschläge","speak":"der Vorschlag"},{"term":"fließend (fließend sprechen)","meaning":"fluent(ly)","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"fließend (fließend sprechen)","form":"","speak":"fließend (fließend sprechen)"},{"term":"vorgeben","meaning":"to pretend / claim","unit":"E32","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"vorgeben","form":"","speak":"vorgeben"},{"term":"befreundet (befreundet sein)","meaning":"friends (to be friends)","unit":"E33","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"befreundet (befreundet sein)","form":"","speak":"befreundet (befreundet sein)"},{"term":"auffordern","meaning":"to request / prompt","unit":"E33","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"auffordern","form":"","speak":"auffordern"},{"term":"thematisieren","meaning":"to address / thematize","unit":"E33","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"thematisieren","form":"","speak":"thematisieren"},{"term":"lügen","meaning":"to lie","unit":"E34","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"lügen","form":"","speak":"lügen"},{"term":"umformulieren","meaning":"to reformulate","unit":"E34","page":10,"category":"Kommunikation & Miteinander","article":"other","headword":"umformulieren","form":"","speak":"umformulieren"},{"term":"körperlich","meaning":"physical(ly)","unit":"E31","page":11,"category":"Körper & Körpersprache","article":"other","headword":"körperlich","form":"","speak":"körperlich"},{"term":"schütteln","meaning":"to shake","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"schütteln","form":"","speak":"schütteln"},{"term":"die Achsel, die Achseln (mit den Achseln zucken)","meaning":"shoulder (to shrug one's shoulders)","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Achsel","form":"die Achseln (mit den Achseln zucken)","speak":"die Achsel"},{"term":"die Augenbraue, die Augenbrauen","meaning":"eyebrow","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Augenbraue","form":"die Augenbrauen","speak":"die Augenbraue"},{"term":"die Stirn, die Stirnen","meaning":"forehead","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Stirn","form":"die Stirnen","speak":"die Stirn"},{"term":"runzeln","meaning":"to wrinkle / furrow (brow)","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"runzeln","form":"","speak":"runzeln"},{"term":"senken","meaning":"to lower","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"senken","form":"","speak":"senken"},{"term":"tasten","meaning":"to feel / grope","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"tasten","form":"","speak":"tasten"},{"term":"zucken","meaning":"to twitch / shrug","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"zucken","form":"","speak":"zucken"},{"term":"die Statur, die Staturen","meaning":"build / stature","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Statur","form":"die Staturen","speak":"die Statur"},{"term":"die Träne, die Tränen","meaning":"tear","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Träne","form":"die Tränen","speak":"die Träne"},{"term":"die Zunge, die Zungen","meaning":"tongue","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"die","headword":"die Zunge","form":"die Zungen","speak":"die Zunge"},{"term":"bewegen Familie & Kindheit","meaning":"to move","unit":"E32","page":11,"category":"Körper & Körpersprache","article":"other","headword":"bewegen Familie & Kindheit","form":"","speak":"bewegen Familie & Kindheit"},{"term":"12 Wörter to beerdigt werden","meaning":"be buried","unit":"E32","page":11,"category":"Familie & Kindheit","article":"other","headword":"12 Wörter to beerdigt werden","form":"","speak":"12 Wörter to beerdigt werden"},{"term":"die Kindheit, die Kindheiten","meaning":"childhood","unit":"E32","page":12,"category":"Familie & Kindheit","article":"die","headword":"die Kindheit","form":"die Kindheiten","speak":"die Kindheit"},{"term":"das Altersheim, die Altersheime","meaning":"retirement/old people's home","unit":"E32","page":12,"category":"Familie & Kindheit","article":"das","headword":"das Altersheim","form":"die Altersheime","speak":"das Altersheim"},{"term":"die Generation, die Generationen","meaning":"generation","unit":"E32","page":12,"category":"Familie & Kindheit","article":"die","headword":"die Generation","form":"die Generationen","speak":"die Generation"},{"term":"der Stammbaum, die Stammbäume","meaning":"family tree","unit":"E32","page":12,"category":"Familie & Kindheit","article":"der","headword":"der Stammbaum","form":"die Stammbäume","speak":"der Stammbaum"},{"term":"das Kinderfoto, die Kinderfotos","meaning":"childhood photo","unit":"E32","page":12,"category":"Familie & Kindheit","article":"das","headword":"das Kinderfoto","form":"die Kinderfotos","speak":"das Kinderfoto"},{"term":"die Familienbeziehung, die Familienbeziehungen","meaning":"family relationship","unit":"E32","page":12,"category":"Familie & Kindheit","article":"die","headword":"die Familienbeziehung","form":"die Familienbeziehungen","speak":"die Familienbeziehung"},{"term":"die Betreuung, die Betreuungen","meaning":"care / supervision","unit":"E32","page":12,"category":"Familie & Kindheit","article":"die","headword":"die Betreuung","form":"die Betreuungen","speak":"die Betreuung"},{"term":"der Kindheitswunsch, die Kindheitswünsche","meaning":"childhood wish","unit":"E32","page":12,"category":"Familie & Kindheit","article":"der","headword":"der Kindheitswunsch","form":"die Kindheitswünsche","speak":"der Kindheitswunsch"},{"term":"die Ehe, die Ehen","meaning":"marriage","unit":"E33","page":12,"category":"Familie & Kindheit","article":"die","headword":"die Ehe","form":"die Ehen","speak":"die Ehe"},{"term":"erwachsen","meaning":"adult / grown-up","unit":"E33","page":12,"category":"Familie & Kindheit","article":"other","headword":"erwachsen","form":"","speak":"erwachsen"},{"term":"zerbrechen Migration & Herkunft","meaning":"to break / shatter","unit":"E33","page":12,"category":"Familie & Kindheit","article":"other","headword":"zerbrechen Migration & Herkunft","form":"","speak":"zerbrechen Migration & Herkunft"},{"term":"22 Wörter das Lager, die Lager","meaning":"camp / warehouse","unit":"E33","page":12,"category":"Migration & Herkunft","article":"other","headword":"22 Wörter das Lager","form":"die Lager","speak":"22 Wörter das Lager"},{"term":"anwerben","meaning":"to recruit","unit":"E33","page":12,"category":"Migration & Herkunft","article":"other","headword":"anwerben","form":"","speak":"anwerben"},{"term":"das Wirtschaftswunder, die Wirtschaftswunder","meaning":"economic miracle","unit":"E33","page":12,"category":"Migration & Herkunft","article":"das","headword":"das Wirtschaftswunder","form":"die Wirtschaftswunder","speak":"das Wirtschaftswunder"},{"term":"der Landbesitz, die Landbesitze","meaning":"land ownership","unit":"E33","page":12,"category":"Migration & Herkunft","article":"der","headword":"der Landbesitz","form":"die Landbesitze","speak":"der Landbesitz"},{"term":"der Emigrant / die Emigrantin","meaning":"emigrant","unit":"E33","page":12,"category":"Migration & Herkunft","article":"der","headword":"der Emigrant / die Emigrantin","form":"","speak":"der Emigrant / die Emigrantin"},{"term":"die Auswanderung, die Auswanderungen","meaning":"emigration","unit":"E33","page":13,"category":"Migration & Herkunft","article":"die","headword":"die Auswanderung","form":"die Auswanderungen","speak":"die Auswanderung"},{"term":"die Einwanderung, die Einwanderungen","meaning":"immigration","unit":"E33","page":13,"category":"Migration & Herkunft","article":"die","headword":"die Einwanderung","form":"die Einwanderungen","speak":"die Einwanderung"},{"term":"religiös","meaning":"religious","unit":"E33","page":13,"category":"Migration & Herkunft","article":"other","headword":"religiös","form":"","speak":"religiös"},{"term":"wegziehen","meaning":"to move away","unit":"E33","page":13,"category":"Migration & Herkunft","article":"other","headword":"wegziehen","form":"","speak":"wegziehen"},{"term":"zurückkehren","meaning":"to return","unit":"E33","page":13,"category":"Migration & Herkunft","article":"other","headword":"zurückkehren","form":"","speak":"zurückkehren"},{"term":"die Heimatstadt, die Heimatstädte","meaning":"hometown","unit":"E33","page":13,"category":"Migration & Herkunft","article":"die","headword":"die Heimatstadt","form":"die Heimatstädte","speak":"die Heimatstadt"},{"term":"der Migrant / die Migrantin","meaning":"migrant","unit":"E33","page":13,"category":"Migration & Herkunft","article":"der","headword":"der Migrant / die Migrantin","form":"","speak":"der Migrant / die Migrantin"},{"term":"verfolgen","meaning":"to pursue / persecute","unit":"E33","page":13,"category":"Migration & Herkunft","article":"other","headword":"verfolgen","form":"","speak":"verfolgen"},{"term":"das Asyl, die Asyle","meaning":"asylum","unit":"E33","page":13,"category":"Migration & Herkunft","article":"das","headword":"das Asyl","form":"die Asyle","speak":"das Asyl"},{"term":"die Rückkehr","meaning":"return","unit":"E33","page":13,"category":"Migration & Herkunft","article":"die","headword":"die Rückkehr","form":"","speak":"die Rückkehr"},{"term":"das Denkmal, die Denkmäler","meaning":"monument","unit":"E33","page":13,"category":"Migration & Herkunft","article":"das","headword":"das Denkmal","form":"die Denkmäler","speak":"das Denkmal"},{"term":"die Wurzel, die Wurzeln","meaning":"root","unit":"E33","page":13,"category":"Migration & Herkunft","article":"die","headword":"die Wurzel","form":"die Wurzeln","speak":"die Wurzel"},{"term":"der Ursprung, die Ursprünge","meaning":"origin","unit":"E33","page":13,"category":"Migration & Herkunft","article":"der","headword":"der Ursprung","form":"die Ursprünge","speak":"der Ursprung"},{"term":"heimkehren","meaning":"to return home","unit":"E33","page":13,"category":"Migration & Herkunft","article":"other","headword":"heimkehren","form":"","speak":"heimkehren"},{"term":"der Lebensweg, die Lebenswege","meaning":"life path","unit":"E33","page":13,"category":"Migration & Herkunft","article":"der","headword":"der Lebensweg","form":"die Lebenswege","speak":"der Lebensweg"},{"term":"der Pass, die Pässe","meaning":"passport","unit":"E34","page":13,"category":"Migration & Herkunft","article":"der","headword":"der Pass","form":"die Pässe","speak":"der Pass"},{"term":"das Visum, die Visa","meaning":"visa","unit":"E34","page":13,"category":"Migration & Herkunft","article":"das","headword":"das Visum","form":"die Visa","speak":"das Visum"},{"term":"aufwärmen","meaning":"to warm up (food)","unit":"E32","page":14,"category":"Essen & Kochen","article":"other","headword":"aufwärmen","form":"","speak":"aufwärmen"},{"term":"schälen","meaning":"to peel","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"schälen","form":"","speak":"schälen"},{"term":"die Pizzeria, die Pizzerien","meaning":"pizzeria","unit":"E33","page":14,"category":"Essen & Kochen","article":"die","headword":"die Pizzeria","form":"die Pizzerien","speak":"die Pizzeria"},{"term":"decken","meaning":"to cover / set (the table)","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"decken","form":"","speak":"decken"},{"term":"anbauen","meaning":"to grow / cultivate","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"anbauen","form":"","speak":"anbauen"},{"term":"das Grundnahrungsmittel, die","meaning":"staple food Grundnahrungsmittel","unit":"E33","page":14,"category":"Essen & Kochen","article":"das","headword":"das Grundnahrungsmittel","form":"die","speak":"das Grundnahrungsmittel"},{"term":"der Kümmel","meaning":"caraway","unit":"E33","page":14,"category":"Essen & Kochen","article":"der","headword":"der Kümmel","form":"","speak":"der Kümmel"},{"term":"der Schnittlauch","meaning":"chives","unit":"E33","page":14,"category":"Essen & Kochen","article":"der","headword":"der Schnittlauch","form":"","speak":"der Schnittlauch"},{"term":"die Gemüsepflanze, die Gemüsepflanzen","meaning":"vegetable plant","unit":"E33","page":14,"category":"Essen & Kochen","article":"die","headword":"die Gemüsepflanze","form":"die Gemüsepflanzen","speak":"die Gemüsepflanze"},{"term":"die Scheibe, die Scheiben","meaning":"slice","unit":"E33","page":14,"category":"Essen & Kochen","article":"die","headword":"die Scheibe","form":"die Scheiben","speak":"die Scheibe"},{"term":"die Schüssel, die Schüsseln","meaning":"bowl","unit":"E33","page":14,"category":"Essen & Kochen","article":"die","headword":"die Schüssel","form":"die Schüsseln","speak":"die Schüssel"},{"term":"hacken","meaning":"to chop","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"hacken","form":"","speak":"hacken"},{"term":"hinzufügen","meaning":"to add","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"hinzufügen","form":"","speak":"hinzufügen"},{"term":"abschmecken Politik & EU","meaning":"to season to taste","unit":"E33","page":14,"category":"Essen & Kochen","article":"other","headword":"abschmecken Politik & EU","form":"","speak":"abschmecken Politik & EU"},{"term":"46 Wörter die Amtssprache, die Amtssprachen","meaning":"oﬃcial language","unit":"E34","page":14,"category":"Politik & EU","article":"other","headword":"46 Wörter die Amtssprache","form":"die Amtssprachen","speak":"46 Wörter die Amtssprache"},{"term":"die Bürokratie, die Bürokratien","meaning":"bureaucracy","unit":"E34","page":14,"category":"Politik & EU","article":"die","headword":"die Bürokratie","form":"die Bürokratien","speak":"die Bürokratie"},{"term":"die Europawahl, die Europawahlen","meaning":"European (Parliament) election","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Europawahl","form":"die Europawahlen","speak":"die Europawahl"},{"term":"die Schulden (Pl.)","meaning":"debts","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Schulden (Pl.)","form":"","speak":"die Schulden (Pl.)"},{"term":"die Wirtschaftsunion","meaning":"economic union","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Wirtschaftsunion","form":"","speak":"die Wirtschaftsunion"},{"term":"das Austauschprogramm, die","meaning":"exchange program Austauschprogramme","unit":"E34","page":15,"category":"Politik & EU","article":"das","headword":"das Austauschprogramm","form":"die","speak":"das Austauschprogramm"},{"term":"das Gesetz, die Gesetze","meaning":"law","unit":"E34","page":15,"category":"Politik & EU","article":"das","headword":"das Gesetz","form":"die Gesetze","speak":"das Gesetz"},{"term":"das Stipendium, die Stipendien","meaning":"scholarship","unit":"E34","page":15,"category":"Politik & EU","article":"das","headword":"das Stipendium","form":"die Stipendien","speak":"das Stipendium"},{"term":"der Beitritt, die Beitritte","meaning":"accession / joining","unit":"E34","page":15,"category":"Politik & EU","article":"der","headword":"der Beitritt","form":"die Beitritte","speak":"der Beitritt"},{"term":"die Demokratie, die Demokratien","meaning":"democracy","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Demokratie","form":"die Demokratien","speak":"die Demokratie"},{"term":"die Stabilität, die Stabilitäten","meaning":"stability","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Stabilität","form":"die Stabilitäten","speak":"die Stabilität"},{"term":"die Studiengebühr, die Studiengebühren","meaning":"tuition fee","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Studiengebühr","form":"die Studiengebühren","speak":"die Studiengebühr"},{"term":"die Umwelttechnik, die Umwelttechniken","meaning":"environmental technology","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Umwelttechnik","form":"die Umwelttechniken","speak":"die Umwelttechnik"},{"term":"die Unterstützung, die Unterstützungen","meaning":"support","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Unterstützung","form":"die Unterstützungen","speak":"die Unterstützung"},{"term":"die Versöhnung, die Versöhnungen","meaning":"reconciliation","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Versöhnung","form":"die Versöhnungen","speak":"die Versöhnung"},{"term":"die Vielfalt","meaning":"diversity","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Vielfalt","form":"","speak":"die Vielfalt"},{"term":"die Währung, die Währungen","meaning":"currency","unit":"E34","page":15,"category":"Politik & EU","article":"die","headword":"die Währung","form":"die Währungen","speak":"die Währung"},{"term":"der EU-Staat, die EU-Staaten","meaning":"EU member state","unit":"E34","page":15,"category":"Politik & EU","article":"der","headword":"der EU-Staat","form":"die EU-Staaten","speak":"der EU-Staat"},{"term":"das Heimatland, die Heimatländer","meaning":"home country","unit":"E34","page":15,"category":"Politik & EU","article":"das","headword":"das Heimatland","form":"die Heimatländer","speak":"das Heimatland"},{"term":"der Minister / die Ministerin","meaning":"minister","unit":"E34","page":15,"category":"Politik & EU","article":"der","headword":"der Minister / die Ministerin","form":"","speak":"der Minister / die Ministerin"},{"term":"aufrufen","meaning":"to call upon","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"aufrufen","form":"","speak":"aufrufen"},{"term":"das Stimmrecht, die Stimmrechte","meaning":"voting right","unit":"E34","page":16,"category":"Politik & EU","article":"das","headword":"das Stimmrecht","form":"die Stimmrechte","speak":"das Stimmrecht"},{"term":"der Rat, die Räte","meaning":"council","unit":"E34","page":16,"category":"Politik & EU","article":"der","headword":"der Rat","form":"die Räte","speak":"der Rat"},{"term":"der Bürger / die Bürgerin","meaning":"citizen","unit":"E34","page":16,"category":"Politik & EU","article":"der","headword":"der Bürger / die Bürgerin","form":"","speak":"der Bürger / die Bürgerin"},{"term":"der Regierungschef / die Regierungschefin","meaning":"head of government","unit":"E34","page":16,"category":"Politik & EU","article":"der","headword":"der Regierungschef / die Regierungschefin","form":"","speak":"der Regierungschef / die Regierungschefin"},{"term":"die Finanzpolitik","meaning":"financial policy","unit":"E34","page":16,"category":"Politik & EU","article":"die","headword":"die Finanzpolitik","form":"","speak":"die Finanzpolitik"},{"term":"die Kommission, die Kommissionen","meaning":"commission","unit":"E34","page":16,"category":"Politik & EU","article":"die","headword":"die Kommission","form":"die Kommissionen","speak":"die Kommission"},{"term":"die Parlamentssitzung, die Parlamentssitzungen","meaning":"parliamentary session","unit":"E34","page":16,"category":"Politik & EU","article":"die","headword":"die Parlamentssitzung","form":"die Parlamentssitzungen","speak":"die Parlamentssitzung"},{"term":"die Wahl, die Wahlen","meaning":"election","unit":"E34","page":16,"category":"Politik & EU","article":"die","headword":"die Wahl","form":"die Wahlen","speak":"die Wahl"},{"term":"die Wahlbeteiligung, die Wahlbeteiligungen","meaning":"voter turnout","unit":"E34","page":16,"category":"Politik & EU","article":"die","headword":"die Wahlbeteiligung","form":"die Wahlbeteiligungen","speak":"die Wahlbeteiligung"},{"term":"garantieren","meaning":"to guarantee","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"garantieren","form":"","speak":"garantieren"},{"term":"stabil","meaning":"stable","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"stabil","form":"","speak":"stabil"},{"term":"umsetzen","meaning":"to implement","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"umsetzen","form":"","speak":"umsetzen"},{"term":"unterzeichnen","meaning":"to sign","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"unterzeichnen","form":"","speak":"unterzeichnen"},{"term":"verwalten","meaning":"to administer / manage","unit":"E34","page":16,"category":"Politik & EU","article":"other","headword":"verwalten","form":"","speak":"verwalten"},{"term":"der Abgeordnete, die Abgeordneten","meaning":"representative / MP","unit":"E34","page":16,"category":"Politik & EU","article":"der","headword":"der Abgeordnete","form":"die Abgeordneten","speak":"der Abgeordnete"},{"term":"das Rechtssystem, die Rechtssysteme","meaning":"legal system","unit":"E34","page":16,"category":"Politik & EU","article":"das","headword":"das Rechtssystem","form":"die Rechtssysteme","speak":"das Rechtssystem"},{"term":"der Premierminister / die Premierministerin","meaning":"prime minister","unit":"E34","page":16,"category":"Politik & EU","article":"der","headword":"der Premierminister / die Premierministerin","form":"","speak":"der Premierminister / die Premierministerin"},{"term":"genehmigen","meaning":"to approve","unit":"E34","page":17,"category":"Politik & EU","article":"other","headword":"genehmigen","form":"","speak":"genehmigen"},{"term":"die Kontrolle, die Kontrollen","meaning":"control","unit":"E34","page":17,"category":"Politik & EU","article":"die","headword":"die Kontrolle","form":"die Kontrollen","speak":"die Kontrolle"},{"term":"die Partei, die Parteien","meaning":"(political) party","unit":"E34","page":17,"category":"Politik & EU","article":"die","headword":"die Partei","form":"die Parteien","speak":"die Partei"},{"term":"die Forderung, die Forderungen","meaning":"demand","unit":"E34","page":17,"category":"Politik & EU","article":"die","headword":"die Forderung","form":"die Forderungen","speak":"die Forderung"},{"term":"die Umweltverschmutzung, die","meaning":"environmental Umweltverschmutzungen pollution","unit":"E34","page":17,"category":"Politik & EU","article":"die","headword":"die Umweltverschmutzung","form":"die","speak":"die Umweltverschmutzung"},{"term":"fordern","meaning":"to demand","unit":"E34","page":17,"category":"Politik & EU","article":"other","headword":"fordern","form":"","speak":"fordern"},{"term":"einbeziehen","meaning":"to include","unit":"E34","page":17,"category":"Politik & EU","article":"other","headword":"einbeziehen","form":"","speak":"einbeziehen"},{"term":"investieren Geschichten & Medien","meaning":"to invest","unit":"E34","page":17,"category":"Politik & EU","article":"other","headword":"investieren Geschichten & Medien","form":"","speak":"investieren Geschichten & Medien"},{"term":"14 Wörter literarisch","meaning":"literary","unit":"E32","page":17,"category":"Geschichten & Medien","article":"other","headword":"14 Wörter literarisch","form":"","speak":"14 Wörter literarisch"},{"term":"begeistern","meaning":"to excite / inspire","unit":"E32","page":17,"category":"Geschichten & Medien","article":"other","headword":"begeistern","form":"","speak":"begeistern"},{"term":"das Tagebuch, die Tagebücher","meaning":"diary","unit":"E32","page":17,"category":"Geschichten & Medien","article":"das","headword":"das Tagebuch","form":"die Tagebücher","speak":"das Tagebuch"},{"term":"die Inhaltsangabe, die Inhaltsangaben","meaning":"summary","unit":"E32","page":17,"category":"Geschichten & Medien","article":"die","headword":"die Inhaltsangabe","form":"die Inhaltsangaben","speak":"die Inhaltsangabe"},{"term":"das Happy End, die Happy Ends","meaning":"happy ending","unit":"E32","page":17,"category":"Geschichten & Medien","article":"das","headword":"das Happy End","form":"die Happy Ends","speak":"das Happy End"},{"term":"der Einstieg, die Einstiege","meaning":"introduction / entry","unit":"E32","page":17,"category":"Geschichten & Medien","article":"der","headword":"der Einstieg","form":"die Einstiege","speak":"der Einstieg"},{"term":"der Hauptteil, die Hauptteile","meaning":"main part","unit":"E32","page":17,"category":"Geschichten & Medien","article":"der","headword":"der Hauptteil","form":"die Hauptteile","speak":"der Hauptteil"},{"term":"der Auszug, die Auszüge","meaning":"excerpt / move-out","unit":"E32","page":17,"category":"Geschichten & Medien","article":"der","headword":"der Auszug","form":"die Auszüge","speak":"der Auszug"},{"term":"die Hintergrundinformation, die","meaning":"background Hintergrundinformationen information","unit":"E32","page":18,"category":"Geschichten & Medien","article":"die","headword":"die Hintergrundinformation","form":"die","speak":"die Hintergrundinformation"},{"term":"die Rezension, die Rezensionen","meaning":"review","unit":"E32","page":18,"category":"Geschichten & Medien","article":"die","headword":"die Rezension","form":"die Rezensionen","speak":"die Rezension"},{"term":"kurzweilig","meaning":"entertaining","unit":"E32","page":18,"category":"Geschichten & Medien","article":"other","headword":"kurzweilig","form":"","speak":"kurzweilig"},{"term":"öde","meaning":"boring / dull","unit":"E32","page":18,"category":"Geschichten & Medien","article":"other","headword":"öde","form":"","speak":"öde"},{"term":"der Hörer / die Hörerin","meaning":"listener","unit":"E32","page":18,"category":"Geschichten & Medien","article":"der","headword":"der Hörer / die Hörerin","form":"","speak":"der Hörer / die Hörerin"},{"term":"nacherzählen Alltag & Organisation","meaning":"to retell","unit":"E32","page":18,"category":"Geschichten & Medien","article":"other","headword":"nacherzählen Alltag & Organisation","form":"","speak":"nacherzählen Alltag & Organisation"},{"term":"81 Wörter der Einsendeschluss, die Einsendeschlüsse","meaning":"submission deadline","unit":"E29","page":18,"category":"Alltag & Organisation","article":"other","headword":"81 Wörter der Einsendeschluss","form":"die Einsendeschlüsse","speak":"81 Wörter der Einsendeschluss"},{"term":"die Freischaltung, die Freischaltungen","meaning":"activation / unlocking","unit":"E29","page":18,"category":"Alltag & Organisation","article":"die","headword":"die Freischaltung","form":"die Freischaltungen","speak":"die Freischaltung"},{"term":"gültig ab","meaning":"valid from","unit":"E29","page":18,"category":"Alltag & Organisation","article":"other","headword":"gültig ab","form":"","speak":"gültig ab"},{"term":"programmieren","meaning":"to program","unit":"E29","page":18,"category":"Alltag & Organisation","article":"other","headword":"programmieren","form":"","speak":"programmieren"},{"term":"vorbeikommen","meaning":"to come by / stop by","unit":"E29","page":18,"category":"Alltag & Organisation","article":"other","headword":"vorbeikommen","form":"","speak":"vorbeikommen"},{"term":"die Abholung","meaning":"pickup / collection","unit":"E29","page":18,"category":"Alltag & Organisation","article":"die","headword":"die Abholung","form":"","speak":"die Abholung"},{"term":"der Busfahrplan, die Busfahrpläne","meaning":"bus schedule","unit":"E29","page":18,"category":"Alltag & Organisation","article":"der","headword":"der Busfahrplan","form":"die Busfahrpläne","speak":"der Busfahrplan"},{"term":"die Kontaktdaten (Pl.)","meaning":"contact details","unit":"E29","page":18,"category":"Alltag & Organisation","article":"die","headword":"die Kontaktdaten (Pl.)","form":"","speak":"die Kontaktdaten (Pl.)"},{"term":"der Überblick, die Überblicke","meaning":"overview","unit":"E29","page":18,"category":"Alltag & Organisation","article":"der","headword":"der Überblick","form":"die Überblicke","speak":"der Überblick"},{"term":"die Alternative, die Alternativen","meaning":"alternative","unit":"E29","page":18,"category":"Alltag & Organisation","article":"die","headword":"die Alternative","form":"die Alternativen","speak":"die Alternative"},{"term":"zusammenlegen","meaning":"to combine / merge","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"zusammenlegen","form":"","speak":"zusammenlegen"},{"term":"das Mittel, die Mittel","meaning":"means / resource","unit":"E29","page":19,"category":"Alltag & Organisation","article":"das","headword":"das Mittel","form":"die Mittel","speak":"das Mittel"},{"term":"die Gewalt","meaning":"violence","unit":"E29","page":19,"category":"Alltag & Organisation","article":"die","headword":"die Gewalt","form":"","speak":"die Gewalt"},{"term":"einführen","meaning":"to introduce","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"einführen","form":"","speak":"einführen"},{"term":"finanziell","meaning":"financial(ly)","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"finanziell","form":"","speak":"finanziell"},{"term":"herumliegen","meaning":"to lie around","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"herumliegen","form":"","speak":"herumliegen"},{"term":"klarkommen","meaning":"to manage / cope","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"klarkommen","form":"","speak":"klarkommen"},{"term":"räumen","meaning":"to clear / tidy up","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"räumen","form":"","speak":"räumen"},{"term":"sauber halten","meaning":"to keep clean","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"sauber halten","form":"","speak":"sauber halten"},{"term":"überwachen","meaning":"to supervise / monitor","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"überwachen","form":"","speak":"überwachen"},{"term":"aufteilen","meaning":"to divide up","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"aufteilen","form":"","speak":"aufteilen"},{"term":"die Realität, die Realitäten","meaning":"reality","unit":"E29","page":19,"category":"Alltag & Organisation","article":"die","headword":"die Realität","form":"die Realitäten","speak":"die Realität"},{"term":"ausgeben","meaning":"to spend (money)","unit":"E29","page":19,"category":"Alltag & Organisation","article":"other","headword":"ausgeben","form":"","speak":"ausgeben"},{"term":"die Ausnahme, die Ausnahmen","meaning":"exception","unit":"E29","page":19,"category":"Alltag & Organisation","article":"die","headword":"die Ausnahme","form":"die Ausnahmen","speak":"die Ausnahme"},{"term":"das Loch, die Löcher","meaning":"hole","unit":"E31","page":19,"category":"Alltag & Organisation","article":"das","headword":"das Loch","form":"die Löcher","speak":"das Loch"},{"term":"der Büroschlaf","meaning":"oﬃce nap","unit":"E31","page":19,"category":"Alltag & Organisation","article":"der","headword":"der Büroschlaf","form":"","speak":"der Büroschlaf"},{"term":"der Strumpf, die Strümpfe","meaning":"stocking / sock","unit":"E31","page":19,"category":"Alltag & Organisation","article":"der","headword":"der Strumpf","form":"die Strümpfe","speak":"der Strumpf"},{"term":"mitlesen","meaning":"to read along","unit":"E31","page":19,"category":"Alltag & Organisation","article":"other","headword":"mitlesen","form":"","speak":"mitlesen"},{"term":"aufsteigen","meaning":"to rise / climb","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"aufsteigen","form":"","speak":"aufsteigen"},{"term":"schnarchen","meaning":"to snore","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"schnarchen","form":"","speak":"schnarchen"},{"term":"springen","meaning":"to jump","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"springen","form":"","speak":"springen"},{"term":"verschütten","meaning":"to spill","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"verschütten","form":"","speak":"verschütten"},{"term":"die Ursache, die Ursachen","meaning":"cause","unit":"E31","page":20,"category":"Alltag & Organisation","article":"die","headword":"die Ursache","form":"die Ursachen","speak":"die Ursache"},{"term":"bedienen","meaning":"to serve / operate","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"bedienen","form":"","speak":"bedienen"},{"term":"das Kerzenlicht","meaning":"candlelight","unit":"E31","page":20,"category":"Alltag & Organisation","article":"das","headword":"das Kerzenlicht","form":"","speak":"das Kerzenlicht"},{"term":"einschlafen","meaning":"to fall asleep","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"einschlafen","form":"","speak":"einschlafen"},{"term":"solch","meaning":"such","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"solch","form":"","speak":"solch"},{"term":"wecken","meaning":"to wake (someone)","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"wecken","form":"","speak":"wecken"},{"term":"betreffen","meaning":"to concern / affect","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"betreffen","form":"","speak":"betreffen"},{"term":"das Privatleben, die Privatleben","meaning":"private life","unit":"E31","page":20,"category":"Alltag & Organisation","article":"das","headword":"das Privatleben","form":"die Privatleben","speak":"das Privatleben"},{"term":"lokal","meaning":"local","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"lokal","form":"","speak":"lokal"},{"term":"teilweise","meaning":"partly","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"teilweise","form":"","speak":"teilweise"},{"term":"abstellen","meaning":"to turn off / put down","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"abstellen","form":"","speak":"abstellen"},{"term":"der Container, die Container","meaning":"container","unit":"E31","page":20,"category":"Alltag & Organisation","article":"der","headword":"der Container","form":"die Container","speak":"der Container"},{"term":"umfallen","meaning":"to fall over","unit":"E31","page":20,"category":"Alltag & Organisation","article":"other","headword":"umfallen","form":"","speak":"umfallen"},{"term":"das Missgeschick, die Missgeschicke","meaning":"mishap","unit":"E31","page":20,"category":"Alltag & Organisation","article":"das","headword":"das Missgeschick","form":"die Missgeschicke","speak":"das Missgeschick"},{"term":"das Versehen, die Versehen","meaning":"oversight / mistake","unit":"E31","page":21,"category":"Alltag & Organisation","article":"das","headword":"das Versehen","form":"die Versehen","speak":"das Versehen"},{"term":"einziehen","meaning":"to move in","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"einziehen","form":"","speak":"einziehen"},{"term":"zuspitzen (die Lage spitzt sich zu)","meaning":"to intensify / escalate (the situation escalates)","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"zuspitzen (die Lage spitzt sich zu)","form":"","speak":"zuspitzen (die Lage spitzt sich zu)"},{"term":"vermutlich","meaning":"presumably","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"vermutlich","form":"","speak":"vermutlich"},{"term":"aufbewahren","meaning":"to keep / store","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"aufbewahren","form":"","speak":"aufbewahren"},{"term":"die Bahnhofshalle, die Bahnhofshallen","meaning":"train station hall","unit":"E32","page":21,"category":"Alltag & Organisation","article":"die","headword":"die Bahnhofshalle","form":"die Bahnhofshallen","speak":"die Bahnhofshalle"},{"term":"leer","meaning":"empty","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"leer","form":"","speak":"leer"},{"term":"sinken","meaning":"to sink","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"sinken","form":"","speak":"sinken"},{"term":"der Schutz","meaning":"protection","unit":"E32","page":21,"category":"Alltag & Organisation","article":"der","headword":"der Schutz","form":"","speak":"der Schutz"},{"term":"die Eintragung, die Eintragungen","meaning":"entry / registration","unit":"E32","page":21,"category":"Alltag & Organisation","article":"die","headword":"die Eintragung","form":"die Eintragungen","speak":"die Eintragung"},{"term":"loswerden","meaning":"to get rid of","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"loswerden","form":"","speak":"loswerden"},{"term":"die Schlange, die Schlangen","meaning":"snake / queue","unit":"E32","page":21,"category":"Alltag & Organisation","article":"die","headword":"die Schlange","form":"die Schlangen","speak":"die Schlange"},{"term":"unnötig","meaning":"unnecessary","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"unnötig","form":"","speak":"unnötig"},{"term":"überlegen","meaning":"to think over / consider","unit":"E32","page":21,"category":"Alltag & Organisation","article":"other","headword":"überlegen","form":"","speak":"überlegen"},{"term":"die Preisverleihung, die Preisverleihungen","meaning":"award ceremony","unit":"E33","page":21,"category":"Alltag & Organisation","article":"die","headword":"die Preisverleihung","form":"die Preisverleihungen","speak":"die Preisverleihung"},{"term":"aufnehmen","meaning":"to admit / record / take in","unit":"E33","page":21,"category":"Alltag & Organisation","article":"other","headword":"aufnehmen","form":"","speak":"aufnehmen"},{"term":"veranlassen","meaning":"to arrange / cause","unit":"E33","page":21,"category":"Alltag & Organisation","article":"other","headword":"veranlassen","form":"","speak":"veranlassen"},{"term":"die Schwierigkeit, die Schwierigkeiten","meaning":"diﬃculty","unit":"E33","page":21,"category":"Alltag & Organisation","article":"die","headword":"die Schwierigkeit","form":"die Schwierigkeiten","speak":"die Schwierigkeit"},{"term":"maßgeschneidert","meaning":"custom-tailored","unit":"E33","page":22,"category":"Alltag & Organisation","article":"other","headword":"maßgeschneidert","form":"","speak":"maßgeschneidert"},{"term":"(sich) verschlechtern","meaning":"to worsen / deteriorate","unit":"E33","page":22,"category":"Alltag & Organisation","article":"other","headword":"(sich) verschlechtern","form":"","speak":"(sich) verschlechtern"},{"term":"die Umweltbedingung, die Umweltbedingungen","meaning":"environmental condition","unit":"E33","page":22,"category":"Alltag & Organisation","article":"die","headword":"die Umweltbedingung","form":"die Umweltbedingungen","speak":"die Umweltbedingung"},{"term":"die Verbreitung, die Verbreitungen","meaning":"spread / distribution","unit":"E33","page":22,"category":"Alltag & Organisation","article":"die","headword":"die Verbreitung","form":"die Verbreitungen","speak":"die Verbreitung"},{"term":"gegenüber","meaning":"opposite / towards","unit":"E33","page":22,"category":"Alltag & Organisation","article":"other","headword":"gegenüber","form":"","speak":"gegenüber"},{"term":"selbstverständlich","meaning":"naturally / of course","unit":"E33","page":22,"category":"Alltag & Organisation","article":"other","headword":"selbstverständlich","form":"","speak":"selbstverständlich"},{"term":"bestehen (aus etwas)","meaning":"to consist (of something)","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"bestehen (aus etwas)","form":"","speak":"bestehen (aus etwas)"},{"term":"zusammenkommen","meaning":"to come together","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"zusammenkommen","form":"","speak":"zusammenkommen"},{"term":"der Absatz, die Absätze","meaning":"paragraph","unit":"E34","page":22,"category":"Alltag & Organisation","article":"der","headword":"der Absatz","form":"die Absätze","speak":"der Absatz"},{"term":"die Perspektive, die Perspektiven","meaning":"perspective","unit":"E34","page":22,"category":"Alltag & Organisation","article":"die","headword":"die Perspektive","form":"die Perspektiven","speak":"die Perspektive"},{"term":"(sich) identifizieren mit","meaning":"to identify with","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"(sich) identifizieren mit","form":"","speak":"(sich) identifizieren mit"},{"term":"vorangehen","meaning":"to go ahead / precede","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"vorangehen","form":"","speak":"vorangehen"},{"term":"das Weltwunder, die Weltwunder","meaning":"wonder of the world","unit":"E34","page":22,"category":"Alltag & Organisation","article":"das","headword":"das Weltwunder","form":"die Weltwunder","speak":"das Weltwunder"},{"term":"der Brunnen, die Brunnen","meaning":"well / fountain","unit":"E34","page":22,"category":"Alltag & Organisation","article":"der","headword":"der Brunnen","form":"die Brunnen","speak":"der Brunnen"},{"term":"reich","meaning":"rich","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"reich","form":"","speak":"reich"},{"term":"unnütz","meaning":"useless","unit":"E34","page":22,"category":"Alltag & Organisation","article":"other","headword":"unnütz","form":"","speak":"unnütz"},{"term":"der Gegensatz, die Gegensätze","meaning":"contrast / opposite","unit":"E34","page":22,"category":"Alltag & Organisation","article":"der","headword":"der Gegensatz","form":"die Gegensätze","speak":"der Gegensatz"}];
+window.KLARWEG_CATEGORIES = {"Schule & Bildungswege":{"icon":"🎓","color":"blue"},"Berufe":{"icon":"💼","color":"violet"},"Freizeit & Reisen":{"icon":"🧳","color":"amber"},"Zeit":{"icon":"⌛","color":"slate"},"Gefühle & Persönlichkeit":{"icon":"😊","color":"rose"},"Kommunikation & Miteinander":{"icon":"💬","color":"cyan"},"Körper & Körpersprache":{"icon":"🕺","color":"fuchsia"},"Familie & Kindheit":{"icon":"👪","color":"indigo"},"Migration & Herkunft":{"icon":"🌍","color":"emerald"},"Essen & Kochen":{"icon":"🍲","color":"orange"},"Politik & EU":{"icon":"🏛️","color":"sky"},"Geschichten & Medien":{"icon":"📖","color":"purple"},"Alltag & Organisation":{"icon":"🗂️","color":"lime"}};
+
+</script>
+  <script>
+(() => {
+  'use strict';
+
+  const vocab = window.KLARWEG_VOCAB || [];
+  const categories = window.KLARWEG_CATEGORIES || {};
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const state = {
+    view: 'dashboard',
+    category: 'all',
+    article: 'all',
+    unit: 'all',
+    search: '',
+    visibleWords: 32,
+    sprint: [],
+    sprintIndex: 0,
+    sprintScore: 0,
+    commandIndex: 0,
+    commandItems: [],
+    recording: false,
+    recordingTimer: null,
+    recordingSeconds: 0,
+    mediaStream: null,
+  };
+
+  const categoryCount = vocab.reduce((acc, item) => {
+    acc[item.category] = (acc[item.category] || 0) + 1;
+    return acc;
+  }, {});
+
+  const examples = {
+    'der Auslöser': 'Was war der Auslöser für den Konflikt?',
+    'das Zeugnis': 'Mein Zeugnis war besser als erwartet.',
+    'die Sprechstunde': 'Die Sprechstunde beginnt um zehn Uhr.',
+    'der Bildungsweg': 'Jeder Mensch hat einen anderen Bildungsweg.',
+    'die Geduld': 'Beim Deutschlernen braucht man Geduld.',
+    'aufrichtig': 'Sie hat sich aufrichtig entschuldigt.',
+    'das Missverständnis': 'Das war nur ein Missverständnis.',
+    'überzeugen': 'Kannst du mich davon überzeugen?',
+    'die Einwanderung': 'Wir sprechen über Einwanderung und Integration.',
+    'die Vielfalt': 'Sprachliche Vielfalt ist eine Stärke.',
+    'abschmecken': 'Zum Schluss musst du die Suppe abschmecken.',
+    'die Rezension': 'Ich habe eine kurze Rezension geschrieben.',
+    'der Einsendeschluss': 'Der Einsendeschluss ist nächsten Freitag.',
+    'aufbewahren': 'Bitte bewahren Sie die Quittung auf.',
+    'die Vergangenheit': 'Die Vergangenheit kann man nicht ändern.',
+    'das Temperament': 'Er hat ein ruhiges Temperament.',
+  };
+
+  function showToast(message, icon = '✓') {
+    const toast = $('#toast');
+    toast.querySelector('span').textContent = icon;
+    toast.querySelector('p').textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  function setView(view, { updateHash = true } = {}) {
+    if (!$(`[data-view-panel="${view}"]`)) return;
+    state.view = view;
+    $$('[data-view-panel]').forEach(panel => panel.classList.toggle('active', panel.dataset.viewPanel === view));
+    $$('[data-view]').forEach(button => {
+      const active = button.dataset.view === view;
+      button.classList.toggle('active', active);
+      if (button.classList.contains('nav-item')) {
+        if (active) button.setAttribute('aria-current', 'page');
+        else button.removeAttribute('aria-current');
+      }
+    });
+    if (updateHash) history.replaceState(null, '', `#${view}`);
+    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    if (view === 'vocabulary') setTimeout(() => $('#vocab-search')?.focus({ preventScroll: true }), 350);
+  }
+
+  function titleCaseCategory(category) {
+    return category.replace(' & ', ' & ');
+  }
+
+  function renderDashboardTopics() {
+    const container = $('#dashboard-topics');
+    container.innerHTML = Object.entries(categories).slice(0, 6).map(([name, meta]) => `
+      <button class="topic-card" data-topic="${escapeAttr(name)}" style="--topic-color:${topicColor(meta.color)}">
+        <span class="topic-icon">${meta.icon}</span>
+        <strong>${escapeHtml(name)}</strong>
+        <small>${categoryCount[name] || 0} words</small><i></i>
+      </button>
+    `).join('');
+  }
+
+  function renderCategoryStrip() {
+    const strip = $('#category-strip');
+    const chips = [`<button class="category-chip active" data-category="all"><span>✦</span>All themes <small>${vocab.length}</small></button>`];
+    Object.entries(categories).forEach(([name, meta]) => {
+      chips.push(`<button class="category-chip" data-category="${escapeAttr(name)}"><span>${meta.icon}</span>${escapeHtml(name)} <small>${categoryCount[name] || 0}</small></button>`);
+    });
+    strip.innerHTML = chips.join('');
+  }
+
+  function topicColor(color) {
+    const map = {
+      blue: '#4586ee', violet: '#7c5de8', amber: '#e7a63d', slate: '#718096', rose: '#ec5e8e',
+      cyan: '#37b9d0', fuchsia: '#d45fce', indigo: '#6674df', emerald: '#27b47e', orange: '#f27b43',
+      sky: '#4da7dd', purple: '#8b5ce4', lime: '#7aad4a'
+    };
+    return map[color] || '#6747e8';
+  }
+
+  function filteredVocab() {
+    const query = normalize(state.search);
+    return vocab.filter(item => {
+      if (state.category !== 'all' && item.category !== state.category) return false;
+      if (state.article !== 'all' && item.article !== state.article) return false;
+      if (state.unit !== 'all' && item.unit !== state.unit) return false;
+      if (query && !normalize(`${item.term} ${item.meaning} ${item.category}`).includes(query)) return false;
+      return true;
+    });
+  }
+
+  function articleColor(article) {
+    return { der: 'var(--der)', die: 'var(--die)', das: 'var(--das)', other: '#8c91a2' }[article] || '#8c91a2';
+  }
+
+  function renderVocab() {
+    const results = filteredVocab();
+    const visible = results.slice(0, state.visibleWords);
+    $('#vocab-count').textContent = `Showing ${visible.length === results.length ? results.length : `${visible.length} of ${results.length}`} word${results.length === 1 ? '' : 's'}`;
+    $('#word-grid').innerHTML = visible.map((item, index) => {
+      const meta = categories[item.category] || { icon: 'Aa' };
+      const articleLabel = item.article === 'other' ? 'word' : item.article;
+      return `
+        <article class="word-card" data-word-index="${vocab.indexOf(item)}" tabindex="0" role="button" aria-label="Study ${escapeAttr(item.headword)}" style="--article-color:${articleColor(item.article)}">
+          <div class="word-top"><span class="article-chip ${item.article}">${articleLabel}</span><span class="word-unit">${item.unit}</span><button class="word-sound" data-speak="${escapeAttr(item.speak)}" aria-label="Hear ${escapeAttr(item.headword)}">▶</button></div>
+          <h3>${escapeHtml(item.headword)}</h3>
+          <div class="word-form">${escapeHtml(item.form || 'Verb · adjective · expression')}</div>
+          <p class="word-meaning">${escapeHtml(item.meaning)}</p>
+          <span class="word-category" title="${escapeAttr(item.category)}">${meta.icon}</span>
+        </article>
+      `;
+    }).join('');
+    $('#vocab-empty').hidden = results.length > 0;
+    $('#word-grid').hidden = results.length === 0;
+    $('#load-more').hidden = visible.length >= results.length || results.length === 0;
+  }
+
+  function resetVisibleWords() {
+    state.visibleWords = 32;
+    renderVocab();
+  }
+
+  function clearFilters() {
+    state.category = 'all';
+    state.article = 'all';
+    state.unit = 'all';
+    state.search = '';
+    $('#vocab-search').value = '';
+    $('#unit-filter').value = 'all';
+    $$('#article-filter button').forEach(btn => btn.classList.toggle('active', btn.dataset.article === 'all'));
+    $$('.category-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.category === 'all'));
+    resetVisibleWords();
+  }
+
+  function randomWord() {
+    return vocab[Math.floor(Math.random() * vocab.length)];
+  }
+
+  function setQuickWord(item = randomWord()) {
+    const root = $('#quick-word');
+    root.querySelector('.article-chip').className = `article-chip ${item.article}`;
+    root.querySelector('.article-chip').textContent = item.article === 'other' ? 'Wort' : item.article;
+    root.querySelector('strong').textContent = item.headword.replace(/^(der|die|das)\s+/i, '');
+    root.querySelector('small').textContent = item.meaning;
+    const sound = root.querySelector('.sound-button');
+    sound.dataset.speak = item.speak;
+    sound.setAttribute('aria-label', `Hear ${item.headword}`);
+    root.animate([{ opacity: .2, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { duration: 260 });
+  }
+
+  function createSprint(startItem = null) {
+    const pool = filteredVocab().length >= 5 ? filteredVocab() : vocab;
+    const shuffled = [...pool].sort(() => Math.random() - .5).slice(0, 5);
+    if (startItem) {
+      const duplicate = shuffled.findIndex(item => item === startItem);
+      if (duplicate >= 0) shuffled.splice(duplicate, 1);
+      shuffled.unshift(startItem);
+      shuffled.splice(5);
+    }
+    state.sprint = shuffled;
+    state.sprintIndex = 0;
+    state.sprintScore = 0;
+    updateSprintCard();
+    const dialog = $('#flashcard-modal');
+    if (!dialog.open) dialog.showModal();
+  }
+
+  function updateSprintCard() {
+    const item = state.sprint[state.sprintIndex] || vocab[0];
+    const card = $('#flashcard');
+    card.classList.remove('flipped');
+    const article = $('#flash-article');
+    article.className = `flash-article ${item.article}`;
+    article.style.background = articleColor(item.article);
+    article.textContent = item.article === 'other' ? 'Wort' : item.article;
+    $('#flash-word').textContent = item.headword.replace(/^(der|die|das)\s+/i, '');
+    $('#flash-form').textContent = item.form || `${item.unit} · ${item.category}`;
+    $('#flash-category').textContent = `${categories[item.category]?.icon || 'Aa'} ${item.category}`;
+    $('#flash-meaning').textContent = item.meaning;
+    $('#flash-example').textContent = examples[item.headword] || genericExample(item);
+    $('#flash-speak').dataset.speak = item.speak;
+    $('#sprint-label').textContent = `${state.sprintIndex + 1} of ${state.sprint.length}`;
+    $('#sprint-progress').style.width = `${((state.sprintIndex + 1) / state.sprint.length) * 100}%`;
+    $('#sprint-score').textContent = `${state.sprintScore} remembered`;
+  }
+
+  function genericExample(item) {
+    const bare = item.headword.replace(/^(der|die|das)\s+/i, '');
+    if (item.article !== 'other') return `Heute sprechen wir über „${item.headword}“.`;
+    if (/^(sich\s+)?[a-zäöüß]+en\b/i.test(item.headword)) return `Kannst du „${bare}“ in einem Satz benutzen?`;
+    return `„${bare}“ ist ein nützliches Wort auf B1-Niveau.`;
+  }
+
+  function recall(result) {
+    if (result === 'good') state.sprintScore += 1;
+    if (state.sprintIndex < state.sprint.length - 1) {
+      state.sprintIndex += 1;
+      updateSprintCard();
+    } else {
+      $('#flashcard-modal').close();
+      showToast(`Sprint complete · ${state.sprintScore}/5 remembered`, '✦');
+      setQuickWord();
+    }
+  }
+
+  function speak(text) {
+    if (!('speechSynthesis' in window)) {
+      showToast('Speech is not supported in this browser', '!');
+      return;
+    }
+    speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    utterance.rate = .88;
+    const voices = speechSynthesis.getVoices();
+    utterance.voice = voices.find(v => v.lang?.toLowerCase().startsWith('de')) || null;
+    speechSynthesis.speak(utterance);
+  }
+
+  function setupBuilder() {
+    const bank = $('#word-bank');
+    const zone = $('#answer-zone');
+    const check = $('#check-builder');
+    const feedback = $('#builder-feedback');
+
+    function update() {
+      const count = zone.querySelectorAll('button').length;
+      zone.querySelector('.answer-placeholder')?.remove();
+      if (!count) zone.insertAdjacentHTML('afterbegin', '<span class="answer-placeholder">Tap the words in the correct order</span>');
+      check.disabled = count !== 8;
+      check.classList.toggle('disabled', count !== 8);
+      feedback.hidden = true;
+    }
+
+    bank.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      zone.appendChild(button);
+      update();
+    });
+    zone.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      bank.appendChild(button);
+      update();
+    });
+    $('#reset-builder').addEventListener('click', () => {
+      [...zone.querySelectorAll('button')].forEach(button => bank.appendChild(button));
+      feedback.hidden = true;
+      update();
+    });
+    check.addEventListener('click', () => {
+      const answer = [...zone.querySelectorAll('button')].map(button => button.textContent.trim().toLowerCase()).join(' ');
+      const correct = 'obwohl ich müde bin lerne ich weiter deutsch';
+      feedback.hidden = false;
+      if (answer === correct) {
+        feedback.className = 'feedback correct';
+        feedback.innerHTML = '<strong>Perfekt!</strong> “Obwohl” sends <em>bin</em> to the end of its clause. In the main clause, <em>lerne</em> takes position two.';
+        showToast('+15 XP · Sentence built', '✦');
+      } else {
+        feedback.className = 'feedback wrong';
+        feedback.innerHTML = '<strong>Almost.</strong> Try: <em>Obwohl ich müde bin, lerne ich weiter Deutsch.</em> The first verb travels to the clause ending.';
+      }
+    });
+    update();
+  }
+
+  function setupTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem('klarweg-theme'); } catch (_) {}
+    const preferred = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const theme = saved || preferred;
+    document.documentElement.dataset.theme = theme;
+    updateThemeButton(theme);
+    $('#theme-toggle').addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('klarweg-theme', next); } catch (_) {}
+      updateThemeButton(next);
+    });
+  }
+
+  function updateThemeButton(theme) {
+    const button = $('#theme-toggle');
+    button.querySelector('.theme-icon').textContent = theme === 'dark' ? '☀' : '☾';
+    button.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+    const meta = $('meta[name="theme-color"]');
+    if (meta) meta.content = theme === 'dark' ? '#0f1119' : '#6548e8';
+  }
+
+  function setupChallenge() {
+    $('#daily-challenge').addEventListener('click', () => $('#challenge-modal').showModal());
+    $$('.challenge-options button').forEach(button => button.addEventListener('click', () => {
+      const correct = button.dataset.correct === 'true';
+      $$('.challenge-options button').forEach(option => option.disabled = true);
+      button.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) $('.challenge-options button[data-correct="true"]').classList.add('correct');
+      const feedback = $('#challenge-feedback');
+      feedback.hidden = false;
+      feedback.style.background = correct ? 'var(--green-soft)' : 'color-mix(in srgb,var(--rose) 11%,var(--surface-solid))';
+      feedback.style.color = correct ? 'var(--green)' : 'var(--rose)';
+      feedback.innerHTML = correct
+        ? '<strong>Genau!</strong> After <em>weil</em>, the conjugated verb goes to the end: <em>müde bin</em>.'
+        : '<strong>Not quite.</strong> <em>Weil</em> is a verb magnet: <em>weil ich müde bin</em>.';
+      if (correct) showToast('+40 XP · Daily challenge complete', '✦');
+    }));
+  }
+
+  function renderActivity() {
+    const values = [8,0,14,22,0,12,18,28,16,0,34,20,9,26,42,0,18,24,31,12,0,38,46,26,0,34,41,18,29,48];
+    $('.activity-bars').innerHTML = values.map((value, index) => `<span class="${index === values.length - 1 ? 'current' : ''}" style="height:${Math.max(4, value * 3.3)}px" title="${value} minutes"></span>`).join('');
+  }
+
+  function setupTutor() {
+    const messages = $('#chat-messages');
+    const form = $('#chat-form');
+    const input = $('#chat-input');
+
+    const responses = [
+      {
+        match: /dativ|dative|mit\b/i,
+        html: '<p><strong>Mit</strong> always takes the dative. Think of it as a fixed partnership: <em>mit + dem/der/den</em>.</p><div class="mini-rule"><span class="rule-prep">mit</span><span>＋</span><span class="rule-article">dem Fahrrad</span></div><p>Mini practice: <strong>mit der Freundin</strong>, <strong>mit dem Kind</strong>, <strong>mit den Kollegen</strong>.</p>'
+      },
+      {
+        match: /weil|obwohl|verb|word order/i,
+        html: '<p><strong>Weil</strong> and <strong>obwohl</strong> send the conjugated verb to the end of their clause.</p><div class="mini-rule"><span class="rule-prep">weil</span><span>ich heute</span><span class="rule-article">arbeite →</span></div><p>Compare: <strong>Ich bleibe zu Hause, weil ich arbeiten muss.</strong></p>'
+      },
+      {
+        match: /email|schreib|writing|correct/i,
+        html: '<p>Paste your German email here. I will correct it in three layers: <strong>must fix</strong>, <strong>more natural</strong>, and <strong>one reusable phrase</strong>.</p><p>A good B1 opening is: <em>Ich schreibe Ihnen, weil …</em></p>'
+      },
+      {
+        match: /sprechen|speak|roleplay|conversation/i,
+        html: '<p>Sehr gern! Let’s do a B1 roleplay.</p><p><strong>Situation:</strong> You are at a hotel reception and your room is too noisy.</p><p><em>Guten Abend. Wie kann ich Ihnen helfen?</em></p>'
+      }
+    ];
+
+    function appendMessage(role, html) {
+      const wrapper = document.createElement('div');
+      wrapper.className = `message ${role}`;
+      wrapper.innerHTML = role === 'assistant' ? `<div class="message-avatar">K</div><div class="message-body">${html}</div>` : `<p>${html}</p>`;
+      messages.appendChild(wrapper);
+      messages.scrollTop = messages.scrollHeight;
+      return wrapper;
+    }
+
+    function submit(text) {
+      const clean = text.trim();
+      if (!clean) return;
+      appendMessage('user', escapeHtml(clean));
+      input.value = '';
+      autoSizeTextarea(input);
+      const typing = appendMessage('assistant', '<div class="typing"><i></i><i></i><i></i></div>');
+      setTimeout(() => {
+        const response = responses.find(item => item.match.test(clean))?.html || '<p>Good question. Here is the simplest useful version:</p><p>German becomes easier when you learn a <strong>small pattern</strong> and use it immediately. Give me one sentence you want to say, and I will help you build it naturally.</p>';
+        typing.querySelector('.message-body').innerHTML = response;
+        messages.scrollTop = messages.scrollHeight;
+      }, 700 + Math.random() * 450);
+    }
+
+    form.addEventListener('submit', event => { event.preventDefault(); submit(input.value); });
+    input.addEventListener('input', () => autoSizeTextarea(input));
+    $$('.suggestion-row button').forEach(button => button.addEventListener('click', () => submit(button.textContent)));
+    $('#new-chat').addEventListener('click', () => {
+      messages.innerHTML = '<div class="message assistant"><div class="message-avatar">K</div><div class="message-body"><p>Hallo! What would you like to say or understand in German today?</p></div></div>';
+      input.focus();
+    });
+    messages.addEventListener('click', event => {
+      const button = event.target.closest('[data-answer]');
+      if (!button) return;
+      const correct = button.dataset.answer === 'correct';
+      button.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) button.parentElement.querySelector('[data-answer="correct"]').classList.add('correct');
+      showToast(correct ? 'Richtig · mit dem Kind' : 'Try the dative: dem', correct ? '✓' : '↺');
+    });
+  }
+
+  function autoSizeTextarea(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 120)}px`;
+  }
+
+  function setupRecording() {
+    const button = $('#record-button');
+    const recorder = $('#recorder');
+    const label = $('#record-label');
+    button.addEventListener('click', async () => {
+      if (!state.recording) {
+        try {
+          if (navigator.mediaDevices?.getUserMedia) state.mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        } catch (error) {
+          showToast('Microphone permission was not granted', '!');
+        }
+        state.recording = true;
+        state.recordingSeconds = 0;
+        recorder.classList.add('recording');
+        label.textContent = 'Listening · 0:00';
+        button.setAttribute('aria-label', 'Stop recording');
+        state.recordingTimer = setInterval(() => {
+          state.recordingSeconds += 1;
+          label.textContent = `Listening · ${formatTime(state.recordingSeconds)}`;
+        }, 1000);
+      } else {
+        stopRecording();
+        label.textContent = 'Great! Your speech sample is ready.';
+        showToast('Speech captured · feedback ready', '◉');
+        setTimeout(() => { label.textContent = 'Tap to start speaking'; }, 3200);
+      }
+    });
+    $$('.prompt-chips button').forEach(prompt => prompt.addEventListener('click', () => {
+      label.textContent = prompt.dataset.prompt;
+      recorder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }));
+    $$('.scenario-card').forEach(card => card.addEventListener('click', () => {
+      const scenario = card.dataset.scenario;
+      recorder.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      label.textContent = `${scenario} roleplay loaded · tap to begin`;
+      showToast(`${scenario} roleplay is ready`, '◉');
+    }));
+  }
+
+  function stopRecording() {
+    state.recording = false;
+    clearInterval(state.recordingTimer);
+    $('#recorder').classList.remove('recording');
+    $('#record-button').setAttribute('aria-label', 'Start recording');
+    state.mediaStream?.getTracks().forEach(track => track.stop());
+    state.mediaStream = null;
+  }
+
+  function formatTime(seconds) {
+    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  }
+
+  function setupCommandPalette() {
+    const dialog = $('#command-modal');
+    const input = $('#command-input');
+    const results = $('#command-results');
+
+    function buildItems(query = '') {
+      const q = normalize(query);
+      const actions = [
+        { icon: '⌂', title: 'Go to Today', subtitle: 'Dashboard and daily plan', type: 'action', view: 'dashboard' },
+        { icon: '✦', title: 'Continue connector lesson', subtitle: 'weil, obwohl & trotzdem', type: 'lesson', view: 'lesson' },
+        { icon: '◉', title: 'Open Speaking Lab', subtitle: 'Real-life roleplays', type: 'action', view: 'speaking' },
+        { icon: '✧', title: 'Ask Klara', subtitle: 'AI German tutor', type: 'action', view: 'tutor' },
+      ].filter(item => !q || normalize(`${item.title} ${item.subtitle}`).includes(q));
+      const words = vocab.filter(item => !q || normalize(`${item.term} ${item.meaning} ${item.category}`).includes(q)).slice(0, q ? 8 : 4).map(item => ({
+        icon: categories[item.category]?.icon || 'Aa', title: item.headword, subtitle: item.meaning, type: 'word', item
+      }));
+      state.commandItems = [...actions, ...words];
+      state.commandIndex = 0;
+      results.innerHTML = `${actions.length ? '<div class="command-group-label">QUICK ACTIONS</div>' : ''}${actions.map(commandResult).join('')}${words.length ? '<div class="command-group-label">VOCABULARY</div>' : ''}${words.map(commandResult).join('')}${!state.commandItems.length ? '<div class="empty-state"><span>⌕</span><h3>No results</h3><p>Try a German word, English meaning or section.</p></div>' : ''}`;
+      highlightCommand();
+    }
+
+    function commandResult(item, index) {
+      const trueIndex = state.commandItems.indexOf(item);
+      return `<button class="command-result" data-command-index="${trueIndex}"><span>${item.icon}</span><div><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.subtitle)}</small></div><small>${item.type === 'word' ? item.item.unit : 'Open →'}</small></button>`;
+    }
+
+    function highlightCommand() {
+      $$('.command-result', results).forEach((item, index) => item.classList.toggle('selected', index === state.commandIndex));
+      $$('.command-result', results)[state.commandIndex]?.scrollIntoView({ block: 'nearest' });
+    }
+
+    function execute(index = state.commandIndex) {
+      const item = state.commandItems[index];
+      if (!item) return;
+      dialog.close();
+      if (item.type === 'word') {
+        setView('vocabulary');
+        state.search = item.item.headword;
+        $('#vocab-search').value = item.item.headword;
+        resetVisibleWords();
+        setTimeout(() => $('.word-card')?.focus(), 350);
+      } else setView(item.view);
+    }
+
+    function open() {
+      buildItems('');
+      dialog.showModal();
+      setTimeout(() => input.focus(), 20);
+    }
+
+    $('#open-command').addEventListener('click', open);
+    input.addEventListener('input', () => buildItems(input.value));
+    input.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown') { event.preventDefault(); state.commandIndex = Math.min(state.commandIndex + 1, state.commandItems.length - 1); highlightCommand(); }
+      if (event.key === 'ArrowUp') { event.preventDefault(); state.commandIndex = Math.max(state.commandIndex - 1, 0); highlightCommand(); }
+      if (event.key === 'Enter') { event.preventDefault(); execute(); }
+    });
+    results.addEventListener('click', event => {
+      const item = event.target.closest('[data-command-index]');
+      if (item) execute(Number(item.dataset.commandIndex));
+    });
+
+    document.addEventListener('keydown', event => {
+      const typing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); dialog.open ? dialog.close() : open(); }
+      if (event.key === '/' && !typing && !dialog.open) { event.preventDefault(); setView('vocabulary'); setTimeout(() => $('#vocab-search').focus(), 350); }
+      if (!typing && !event.metaKey && !event.ctrlKey && ['1','2','3','4','5'].includes(event.key)) {
+        const views = { '1':'dashboard','2':'lesson','3':'vocabulary','4':'speaking','5':'progress' };
+        setView(views[event.key]);
+      }
+    });
+  }
+
+  function escapeHtml(value = '') {
+    return String(value).replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  }
+  function escapeAttr(value = '') { return escapeHtml(value); }
+  function normalize(value = '') { return String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim(); }
+
+  function bindGlobalEvents() {
+    document.addEventListener('click', event => {
+      const viewButton = event.target.closest('[data-view]');
+      if (viewButton) setView(viewButton.dataset.view);
+
+      const link = event.target.closest('[data-view-link]');
+      if (link) { event.preventDefault(); setView(link.dataset.viewLink); }
+
+      const close = event.target.closest('[data-close]');
+      if (close) $(`#${close.dataset.close}`)?.close();
+
+      const sound = event.target.closest('[data-speak]');
+      if (sound) { event.stopPropagation(); speak(sound.dataset.speak); }
+    });
+
+    $$('.modal').forEach(dialog => dialog.addEventListener('click', event => {
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    }));
+
+    $('#shuffle-word').addEventListener('click', () => setQuickWord());
+    $('#start-flashcards').addEventListener('click', () => createSprint());
+    $('#start-flashcards-top').addEventListener('click', () => createSprint());
+    $('#flashcard').addEventListener('click', event => {
+      if (event.target.closest('[data-speak]')) return;
+      $('#flashcard').classList.toggle('flipped');
+    });
+    $$('.recall').forEach(button => button.addEventListener('click', () => recall(button.dataset.recall)));
+
+    $('#dashboard-topics').addEventListener('click', event => {
+      const topic = event.target.closest('[data-topic]');
+      if (!topic) return;
+      state.category = topic.dataset.topic;
+      setView('vocabulary');
+      $$('.category-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.category === state.category));
+      resetVisibleWords();
+    });
+
+    $('#category-strip').addEventListener('click', event => {
+      const button = event.target.closest('[data-category]');
+      if (!button) return;
+      state.category = button.dataset.category;
+      $$('.category-chip').forEach(btn => btn.classList.toggle('active', btn === button));
+      resetVisibleWords();
+    });
+    $('#article-filter').addEventListener('click', event => {
+      const button = event.target.closest('[data-article]');
+      if (!button) return;
+      state.article = button.dataset.article;
+      $$('#article-filter button').forEach(btn => btn.classList.toggle('active', btn === button));
+      resetVisibleWords();
+    });
+    $('#unit-filter').addEventListener('change', event => { state.unit = event.target.value; resetVisibleWords(); });
+    $('#vocab-search').addEventListener('input', event => { state.search = event.target.value; resetVisibleWords(); });
+    $('#load-more').addEventListener('click', () => { state.visibleWords += 32; renderVocab(); });
+    $('#clear-filters').addEventListener('click', clearFilters);
+
+    $('#word-grid').addEventListener('click', event => {
+      if (event.target.closest('[data-speak]')) return;
+      const card = event.target.closest('[data-word-index]');
+      if (card) createSprint(vocab[Number(card.dataset.wordIndex)]);
+    });
+    $('#word-grid').addEventListener('keydown', event => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-word-index]')) {
+        event.preventDefault();
+        createSprint(vocab[Number(event.target.dataset.wordIndex)]);
+      }
+    });
+  }
+
+  function init() {
+    renderDashboardTopics();
+    renderCategoryStrip();
+    renderVocab();
+    renderActivity();
+    setQuickWord(vocab.find(item => item.headword === 'der Auslöser') || randomWord());
+    setupTheme();
+    setupBuilder();
+    setupChallenge();
+    setupTutor();
+    setupRecording();
+    setupCommandPalette();
+    bindGlobalEvents();
+
+    const initial = location.hash.replace('#', '');
+    setView($(`[data-view-panel="${initial}"]`) ? initial : 'dashboard', { updateHash: false });
+    window.addEventListener('hashchange', () => setView(location.hash.replace('#', '') || 'dashboard', { updateHash: false }));
+
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+</body>
+</html>

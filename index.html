@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6548e8" />
+  <meta name="description" content="Klarweg is a premium, interactive German B1 learning experience with 364 thematic vocabulary items, adaptive practice and AI coaching." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Klarweg — German B1, made clear</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#dashboard" data-view-link="dashboard" aria-label="Klarweg home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+        <span><strong>Klarweg</strong><small>German B1</small></span>
+      </a>
+
+      <nav class="side-nav">
+        <p class="nav-label">Your course</p>
+        <button class="nav-item active" data-view="dashboard" aria-current="page">
+          <span class="nav-icon">⌂</span><span>Today</span><kbd>1</kbd>
+        </button>
+        <button class="nav-item" data-view="lesson">
+          <span class="nav-icon">✦</span><span>Learn</span><kbd>2</kbd>
+        </button>
+        <button class="nav-item" data-view="vocabulary">
+          <span class="nav-icon">Aa</span><span>Vocabulary</span><kbd>3</kbd>
+        </button>
+        <button class="nav-item" data-view="speaking">
+          <span class="nav-icon">◉</span><span>Speaking lab</span><kbd>4</kbd>
+        </button>
+        <button class="nav-item" data-view="tutor">
+          <span class="nav-icon">✧</span><span>AI tutor</span><span class="nav-new">NEW</span>
+        </button>
+        <button class="nav-item" data-view="progress">
+          <span class="nav-icon">↗</span><span>Progress</span><kbd>5</kbd>
+        </button>
+      </nav>
+
+      <div class="sidebar-quest">
+        <div class="quest-top"><span>Weekly quest</span><strong>4 / 7</strong></div>
+        <div class="mini-progress"><span style="width:57%"></span></div>
+        <p>Complete 3 more focused sessions</p>
+        <div class="quest-gem">◇ <span>+120 XP</span></div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="profile-mini" data-view="progress">
+          <span class="avatar">AL</span>
+          <span><strong>Deutschlerner</strong><small>B1 · Level 14</small></span>
+          <span aria-hidden="true">···</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main" id="main-content">
+      <header class="topbar">
+        <button class="mobile-brand" data-view="dashboard" aria-label="Go to dashboard">
+          <span class="brand-mark small" aria-hidden="true"><i></i><i></i></span><strong>Klarweg</strong>
+        </button>
+        <button class="global-search" id="open-command" aria-label="Search lessons and vocabulary">
+          <span aria-hidden="true">⌕</span><span>Search anything</span><kbd>⌘ K</kbd>
+        </button>
+        <div class="top-actions">
+          <div class="top-pill streak-pill" title="12-day streak"><span>🔥</span><strong>12</strong></div>
+          <div class="top-pill xp-pill" title="2,480 experience points"><span>✦</span><strong>2,480</strong></div>
+          <button class="icon-button" id="theme-toggle" aria-label="Switch to dark mode"><span class="theme-icon">☾</span></button>
+          <button class="icon-button notification-button" aria-label="Notifications"><span>♢</span><i></i></button>
+        </div>
+      </header>
+
+      <div class="view-stack">
+        <section class="view active" data-view-panel="dashboard" aria-labelledby="dashboard-title">
+          <div class="page-heading compact">
+            <div>
+              <p class="eyebrow">SATURDAY · YOUR 18-MINUTE PLAN</p>
+              <h1 id="dashboard-title">Guten Tag <span class="wave">👋</span></h1>
+              <p>One focused session today keeps your German moving forward.</p>
+            </div>
+            <button class="button subtle" id="daily-challenge">Daily challenge <span>+40 XP</span></button>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="hero-card">
+              <div class="hero-copy">
+                <div class="lesson-tag"><span class="pulse-dot"></span> CONTINUE LESSON · 7 MIN</div>
+                <h2>Say more with<br><em>weil, obwohl</em> &amp; <em>trotzdem</em></h2>
+                <p>Connect ideas naturally and put the verb exactly where Germans expect it.</p>
+                <div class="hero-meta">
+                  <span><b>62%</b> complete</span><span>·</span><span>Grammar · B1.1</span>
+                </div>
+                <button class="button primary hero-start" data-view="lesson">Continue lesson <span>→</span></button>
+              </div>
+              <div class="hero-visual" aria-label="Visual showing German word order">
+                <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+                <div class="sentence-card card-a"><small>CAUSE</small><span>weil</span><b>ich heute arbeite</b><i>▾ verb at the end</i></div>
+                <div class="sentence-card card-b"><small>CONTRAST</small><span>trotzdem</span><b>gehe ich später aus</b><i>▴ verb stays second</i></div>
+                <div class="floating-word fw-one">obwohl</div><div class="floating-word fw-two">deshalb</div>
+              </div>
+              <div class="hero-progress"><span style="width:62%"></span></div>
+            </article>
+
+            <article class="plan-card card">
+              <div class="card-heading">
+                <div><p class="eyebrow">TODAY'S PLAN</p><h3>18 focused minutes</h3></div>
+                <div class="progress-ring" style="--progress: 44"><span>8<small>/18</small></span></div>
+              </div>
+              <div class="plan-list">
+                <button class="plan-item done" data-view="vocabulary"><span class="plan-check">✓</span><span><strong>Vocabulary warm-up</strong><small>12 words · completed</small></span><b>+20</b></button>
+                <button class="plan-item current" data-view="lesson"><span class="plan-icon">✦</span><span><strong>Connector word order</strong><small>Interactive lesson · 7 min</small></span><b>+35</b></button>
+                <button class="plan-item" data-view="speaking"><span class="plan-icon">◉</span><span><strong>At the Bürgeramt</strong><small>Speaking roleplay · 6 min</small></span><b>+30</b></button>
+              </div>
+              <button class="text-button" data-view="lesson">Adjust today's plan <span>→</span></button>
+            </article>
+          </div>
+
+          <div class="content-grid three">
+            <article class="card stat-card retention-card">
+              <div class="card-heading slim"><div><p class="eyebrow">MEMORY</p><h3>Words getting stronger</h3></div><span class="status positive">+8%</span></div>
+              <div class="retention-bars" aria-label="Memory strength chart">
+                <span style="height:32%"></span><span style="height:42%"></span><span style="height:38%"></span><span style="height:58%"></span><span style="height:64%"></span><span style="height:75%"></span><span class="today" style="height:86%"></span>
+              </div>
+              <div class="chart-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>Today</span></div>
+              <p><strong>86%</strong> predicted recall for reviewed words.</p>
+            </article>
+
+            <article class="card quick-card">
+              <div class="card-heading slim"><div><p class="eyebrow">QUICK PRACTICE</p><h3>Five-word sprint</h3></div><span class="live-dot">LIVE</span></div>
+              <div class="quick-word" id="quick-word">
+                <span class="article-chip der">der</span>
+                <div><strong>Auslöser</strong><small>trigger / cause</small></div>
+                <button class="sound-button" aria-label="Hear pronunciation" data-speak="der Auslöser">↗</button>
+              </div>
+              <div class="quick-actions"><button class="button secondary" id="shuffle-word">Another word</button><button class="button primary" id="start-flashcards">Start sprint</button></div>
+            </article>
+
+            <article class="card tutor-teaser">
+              <div class="tutor-orb" aria-hidden="true"><span></span><span></span><i>✧</i></div>
+              <p class="eyebrow">KLARA · AI TUTOR</p>
+              <h3>“Why is it <em>mit dem</em>?”</h3>
+              <p>Ask anything. Klara explains it simply, then gives you one tiny practice step.</p>
+              <button class="button ink" data-view="tutor">Ask Klara <span>→</span></button>
+            </article>
+          </div>
+
+          <section class="topic-section">
+            <div class="section-heading"><div><p class="eyebrow">EXPLORE YOUR B1 WORLD</p><h2>Learn by real-life theme</h2></div><button class="text-button" data-view="vocabulary">All 364 words <span>→</span></button></div>
+            <div class="topic-scroller" id="dashboard-topics"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view-panel="vocabulary" aria-labelledby="vocab-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">YOUR LIVING WORD BANK</p><h1 id="vocab-title">Vocabulary, organized by life</h1><p>364 B1 words from 13 themes. Search, listen, filter and remember.</p></div>
+            <button class="button primary" id="start-flashcards-top">Study due words <span class="button-count">18</span></button>
+          </div>
+
+          <div class="vocab-toolbar card">
+            <label class="search-field"><span>⌕</span><input id="vocab-search" type="search" placeholder="Search German or English…" autocomplete="off" /><kbd>/</kbd></label>
+            <div class="segmented" id="article-filter" aria-label="Filter by article">
+              <button class="active" data-article="all">All</button><button data-article="der"><i class="article-dot der"></i>der</button><button data-article="die"><i class="article-dot die"></i>die</button><button data-article="das"><i class="article-dot das"></i>das</button><button data-article="other">Other</button>
+            </div>
+            <select id="unit-filter" aria-label="Filter by unit"><option value="all">All units</option><option>E29</option><option>E31</option><option>E32</option><option>E33</option><option>E34</option></select>
+          </div>
+
+          <div class="category-strip" id="category-strip" aria-label="Vocabulary themes"></div>
+          <div class="vocab-meta"><p id="vocab-count">Showing 364 words</p><div class="legend"><span><i class="article-dot der"></i>masculine</span><span><i class="article-dot die"></i>feminine</span><span><i class="article-dot das"></i>neuter</span></div></div>
+          <div class="word-grid" id="word-grid"></div>
+          <div class="empty-state" id="vocab-empty" hidden><span>⌕</span><h3>No words found</h3><p>Try a broader search or clear a filter.</p><button class="button secondary" id="clear-filters">Clear filters</button></div>
+          <button class="button secondary load-more" id="load-more">Show more words</button>
+        </section>
+
+        <section class="view lesson-view" data-view-panel="lesson" aria-labelledby="lesson-title">
+          <div class="lesson-top">
+            <button class="back-button" data-view="dashboard" aria-label="Back to dashboard">←</button>
+            <div class="lesson-progress-wrap"><span>Lesson 3 of 8</span><div class="lesson-progress"><i style="width:62%"></i></div><strong>62%</strong></div>
+            <button class="icon-button" id="lesson-menu" aria-label="Lesson menu">···</button>
+          </div>
+
+          <div class="lesson-layout">
+            <article class="lesson-content">
+              <div class="lesson-kicker"><span>GRAMMAR · B1.1</span><span>7 min</span></div>
+              <h1 id="lesson-title">One idea. Two clauses.<br><em>A tiny verb adventure.</em></h1>
+              <p class="lesson-lead">German word order feels complicated until you see the two simple patterns underneath it.</p>
+
+              <div class="story-scene">
+                <div class="scene-illustration" aria-hidden="true">
+                  <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="building"><i></i><i></i><i></i><i></i></div><div class="person"><span></span><b></b></div>
+                </div>
+                <div class="scene-dialogue">
+                  <span class="speaker">Mila</span>
+                  <p><mark>Obwohl</mark> es regnet, <strong>fahre</strong> ich mit dem Fahrrad.</p>
+                  <div class="translation"><span>Although</span><span>it</span><span>rains,</span><span>I ride</span><span>my bike.</span></div>
+                  <button class="sound-button labeled" data-speak="Obwohl es regnet, fahre ich mit dem Fahrrad.">▶ Hear it naturally</button>
+                </div>
+              </div>
+
+              <section class="concept-block">
+                <p class="eyebrow">THE PATTERN</p>
+                <h2>The connector chooses the verb's seat</h2>
+                <p>With <strong>weil</strong> and <strong>obwohl</strong>, the conjugated verb travels to the end of its clause. In the main clause, it stays in position two.</p>
+                <div class="grammar-visual">
+                  <div class="clause subordinate"><small>DEPENDENT CLAUSE</small><span class="token connector">obwohl</span><span class="token">es</span><span class="token">heute</span><span class="token">stark</span><span class="token verb">regnet</span><i>verb → end</i></div>
+                  <div class="comma">,</div>
+                  <div class="clause main-clause"><small>MAIN CLAUSE</small><span class="token">fahre</span><span class="token verb">ich</span><span class="token">mit dem Fahrrad</span><i>verb → position 2</i></div>
+                </div>
+                <div class="memory-tip"><span>🧠</span><p><strong>Memory trick:</strong> <em>weil</em> and <em>obwohl</em> are “verb magnets.” They pull the verb to the clause's far edge.</p></div>
+              </section>
+
+              <section class="practice-block">
+                <div class="practice-heading"><div><p class="eyebrow">YOUR TURN</p><h2>Build the sentence</h2></div><span class="question-count">1 / 3</span></div>
+                <p class="prompt">“Although I am tired, I am still learning German.”</p>
+                <div class="answer-zone" id="answer-zone" aria-live="polite"><span class="answer-placeholder">Tap the words in the correct order</span></div>
+                <div class="word-bank" id="word-bank">
+                  <button>lerne</button><button>obwohl</button><button>ich</button><button>müde</button><button>bin</button><button>ich</button><button>weiter</button><button>Deutsch</button>
+                </div>
+                <div class="practice-actions"><button class="button secondary" id="reset-builder">Reset</button><button class="button primary disabled" id="check-builder" disabled>Check answer</button></div>
+                <div class="feedback" id="builder-feedback" hidden></div>
+              </section>
+            </article>
+
+            <aside class="lesson-aside">
+              <div class="lesson-outline card">
+                <p class="eyebrow">IN THIS LESSON</p>
+                <ol><li class="done"><span>✓</span><div><strong>Meet the pattern</strong><small>Story + intuition</small></div></li><li class="active"><span>2</span><div><strong>See the word order</strong><small>Visual explanation</small></div></li><li><span>3</span><div><strong>Build it yourself</strong><small>3 exercises</small></div></li><li><span>4</span><div><strong>Use it in speech</strong><small>Mini roleplay</small></div></li></ol>
+              </div>
+              <div class="teacher-note card"><div class="teacher-avatar">K</div><div><p class="eyebrow">KLARA'S NOTE</p><p>Don't translate word order from English. First choose the connector, then let the connector choose the structure.</p></div></div>
+              <button class="button secondary full" data-view="tutor">Ask a question</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="speaking" aria-labelledby="speaking-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">SPEAKING LAB</p><h1 id="speaking-title">Practice the moments that matter</h1><p>Low-pressure roleplays with instant, encouraging feedback.</p></div>
+            <div class="lab-level"><span>CEFR goal</span><strong>B1 · Independent speaker</strong></div>
+          </div>
+
+          <div class="scenario-grid">
+            <button class="scenario-card featured" data-scenario="Bürgeramt"><div class="scenario-art city"><span>🏛️</span></div><div><span class="difficulty">RECOMMENDED · 6 MIN</span><h3>At the Bürgeramt</h3><p>Register your new address and ask what documents you need.</p><div class="scenario-footer"><span>8 key phrases</span><b>Start →</b></div></div></button>
+            <button class="scenario-card" data-scenario="Doctor"><div class="scenario-art doctor"><span>🩺</span></div><div><span class="difficulty">HEALTH · 5 MIN</span><h3>Explain symptoms</h3><p>Describe how you feel and understand the doctor's advice.</p><div class="scenario-footer"><span>10 key phrases</span><b>Start →</b></div></div></button>
+            <button class="scenario-card" data-scenario="Work"><div class="scenario-art work"><span>💼</span></div><div><span class="difficulty">WORK · 7 MIN</span><h3>Share your opinion</h3><p>Agree, disagree and make a suggestion in a team meeting.</p><div class="scenario-footer"><span>12 key phrases</span><b>Start →</b></div></div></button>
+          </div>
+
+          <div class="speaking-studio card">
+            <div class="studio-copy"><p class="eyebrow">FREE SPEAK</p><h2>Tell me about your week</h2><p>Speak for 30–60 seconds. You will get feedback on clarity, grammar, vocabulary and pronunciation.</p><div class="prompt-chips"><button data-prompt="Was war diese Woche besonders schön?">What was especially nice?</button><button data-prompt="Was war schwierig?">What was difficult?</button><button data-prompt="Was planst du fürs Wochenende?">Weekend plans?</button></div></div>
+            <div class="recorder" id="recorder">
+              <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <button id="record-button" aria-label="Start recording"><span>●</span></button>
+              <p id="record-label">Tap to start speaking</p><small>Microphone stays on your device in this prototype</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="view tutor-view" data-view-panel="tutor" aria-labelledby="tutor-title">
+          <div class="tutor-shell card">
+            <aside class="chat-sidebar">
+              <div><p class="eyebrow">AI TUTOR</p><h2 id="tutor-title">Klara</h2><p>Your patient German coach.</p></div>
+              <button class="button primary full" id="new-chat">＋ New conversation</button>
+              <div class="chat-history"><p class="nav-label">RECENT</p><button class="active"><span>Why “mit dem”?</span><small>Today</small></button><button><span>Correct my email</span><small>Yesterday</small></button><button><span>Job interview practice</span><small>Friday</small></button></div>
+              <div class="tutor-settings"><span>✧</span><p><strong>Teaching style</strong><small>Simple · Visual · Encouraging</small></p></div>
+            </aside>
+            <section class="chat-main">
+              <header class="chat-header"><div class="klara-avatar"><i></i>✧</div><div><strong>Klara</strong><small><i></i> Ready to help</small></div><button class="icon-button">···</button></header>
+              <div class="chat-messages" id="chat-messages" aria-live="polite">
+                <div class="message user"><p>Why do Germans say <strong>mit dem Fahrrad</strong> and not <strong>mit das Fahrrad</strong>?</p></div>
+                <div class="message assistant">
+                  <div class="message-avatar">K</div>
+                  <div class="message-body"><p>Because <strong>mit</strong> always opens the <em>dative door</em>. When a neuter noun walks through that door, <strong>das</strong> changes to <strong>dem</strong>.</p>
+                    <div class="mini-rule"><span class="rule-prep">mit</span><span>＋</span><span class="rule-article">das → dem</span><span>＋</span><span>Fahrrad</span></div>
+                    <p>So: <strong>Ich fahre mit dem Fahrrad.</strong></p>
+                    <div class="tiny-practice"><small>TRY ONE</small><p>Complete: „Ich spreche mit ___ Kind.“</p><div><button data-answer="wrong">das</button><button data-answer="correct">dem</button><button data-answer="wrong">den</button></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="suggestion-row"><button>Explain it even more simply</button><button>Give me 3 examples</button><button>Practice dative with me</button></div>
+              <form class="chat-composer" id="chat-form"><button type="button" class="attach-button" aria-label="Attach content">＋</button><textarea id="chat-input" rows="1" placeholder="Ask about German, paste a sentence, or start a roleplay…"></textarea><button type="submit" class="send-button" aria-label="Send message">↑</button></form>
+              <p class="chat-disclaimer">Klara can make mistakes. Use feedback as a learning aid.</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" data-view-panel="progress" aria-labelledby="progress-title">
+          <div class="page-heading">
+            <div><p class="eyebrow">YOUR PROGRESS</p><h1 id="progress-title">Quiet progress, made visible</h1><p>What is improving, what needs attention and the smartest next step.</p></div>
+            <select aria-label="Progress time range"><option>Last 30 days</option><option>Last 7 days</option><option>All time</option></select>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric card"><span class="metric-icon">✦</span><p>Total XP</p><h2>2,480</h2><small>+420 this week</small></article>
+            <article class="metric card"><span class="metric-icon">◷</span><p>Learning time</p><h2>9h 42m</h2><small>+18% vs last month</small></article>
+            <article class="metric card"><span class="metric-icon">Aa</span><p>Words learned</p><h2>186</h2><small>51% of this collection</small></article>
+            <article class="metric card"><span class="metric-icon">🔥</span><p>Current streak</p><h2>12 days</h2><small>Personal best: 21</small></article>
+          </div>
+
+          <div class="progress-main-grid">
+            <article class="card activity-chart">
+              <div class="card-heading"><div><p class="eyebrow">CONSISTENCY</p><h3>Learning activity</h3></div><div class="chart-stat"><strong>18</strong><small>active days</small></div></div>
+              <div class="activity-bars" aria-label="Daily learning minutes over four weeks"></div>
+              <div class="activity-axis"><span>Jun 12</span><span>Jun 19</span><span>Jun 26</span><span>Jul 3</span><span>Today</span></div>
+            </article>
+            <article class="card level-card">
+              <p class="eyebrow">CEFR JOURNEY</p><div class="level-orbit"><div><span>B1</span><small>44%</small></div></div><h3>Building independence</h3><p>You can handle familiar situations. Your next leap is connecting ideas with more detail.</p><div class="level-path"><span class="done">A1</span><i></i><span class="done">A2</span><i></i><span class="current">B1</span><i></i><span>B2</span></div>
+            </article>
+          </div>
+
+          <div class="skill-grid">
+            <article class="card skill-card"><div class="card-heading slim"><div><p class="eyebrow">SKILL MAP</p><h3>Your B1 balance</h3></div><span class="status">Updated today</span></div><div class="skill-list"><div><span>Vocabulary</span><i><b style="width:72%"></b></i><strong>72</strong></div><div><span>Grammar</span><i><b style="width:64%"></b></i><strong>64</strong></div><div><span>Reading</span><i><b style="width:81%"></b></i><strong>81</strong></div><div><span>Listening</span><i><b style="width:58%"></b></i><strong>58</strong></div><div><span>Speaking</span><i><b style="width:52%"></b></i><strong>52</strong></div><div><span>Writing</span><i><b style="width:61%"></b></i><strong>61</strong></div></div></article>
+            <article class="card focus-card"><span class="focus-glow"></span><p class="eyebrow">SMART NEXT STEP</p><h3>Train listening connectors</h3><p>You recognize <em>obwohl</em> in text, but miss it at natural speaking speed. A 6-minute drill will close the gap.</p><button class="button primary" data-view="lesson">Start focused practice</button></article>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation"><button class="active" data-view="dashboard"><span>⌂</span>Today</button><button data-view="lesson"><span>✦</span>Learn</button><button data-view="vocabulary"><span>Aa</span>Words</button><button data-view="speaking"><span>◉</span>Speak</button><button data-view="tutor"><span>✧</span>Klara</button></nav>
+
+  <dialog class="modal flashcard-modal" id="flashcard-modal">
+    <div class="modal-header"><div><p class="eyebrow">FOCUSED REVIEW</p><h2>Five-word sprint</h2></div><button class="close-button" data-close="flashcard-modal" aria-label="Close">×</button></div>
+    <div class="sprint-progress"><span id="sprint-label">1 of 5</span><div><i id="sprint-progress" style="width:20%"></i></div><strong id="sprint-score">0 remembered</strong></div>
+    <button class="flashcard" id="flashcard" aria-label="Flip flashcard"><div class="flash-face front"><span class="flash-article" id="flash-article">der</span><h2 id="flash-word">Auslöser</h2><p id="flash-form">die Auslöser</p><small>Tap to reveal meaning</small><span class="flip-hint">↻</span></div><div class="flash-face back"><span class="flash-category" id="flash-category">😊 Feelings & personality</span><h2 id="flash-meaning">trigger / cause</h2><p class="flash-example" id="flash-example">Was war der Auslöser für den Konflikt?</p><button class="sound-button labeled" id="flash-speak" data-speak="der Auslöser">▶ Hear pronunciation</button><span class="flip-hint">↻</span></div></button>
+    <div class="recall-actions"><button class="recall again" data-recall="again"><span>↺</span><strong>Again</strong><small>1 min</small></button><button class="recall hard" data-recall="hard"><span>◌</span><strong>Hard</strong><small>1 day</small></button><button class="recall good" data-recall="good"><span>✓</span><strong>Got it</strong><small>4 days</small></button></div>
+  </dialog>
+
+  <dialog class="modal challenge-modal" id="challenge-modal">
+    <div class="modal-header"><div><p class="eyebrow">DAILY CHALLENGE · +40 XP</p><h2>Which sentence is correct?</h2></div><button class="close-button" data-close="challenge-modal" aria-label="Close">×</button></div>
+    <p class="challenge-prompt">Choose the natural German word order.</p>
+    <div class="challenge-options"><button data-correct="false"><span>A</span>Weil ich bin müde, gehe ich früh ins Bett.</button><button data-correct="true"><span>B</span>Weil ich müde bin, gehe ich früh ins Bett.</button><button data-correct="false"><span>C</span>Weil müde ich bin, ich gehe früh ins Bett.</button></div>
+    <div class="challenge-feedback" id="challenge-feedback" hidden></div>
+  </dialog>
+
+  <dialog class="modal command-modal" id="command-modal">
+    <div class="command-search"><span>⌕</span><input id="command-input" placeholder="Search words, lessons or actions…" autocomplete="off" /><kbd>ESC</kbd></div>
+    <div class="command-results" id="command-results"></div>
+    <div class="command-footer"><span><i>↑↓</i> navigate</span><span><i>↵</i> open</span><span><i>esc</i> close</span></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><p>Saved</p></div>
+
+  <script src="vocab-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

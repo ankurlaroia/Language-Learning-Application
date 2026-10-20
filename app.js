@@ -101,7 +101,7 @@
     const map = {
       blue: '#4586ee', violet: '#7c5de8', amber: '#e7a63d', slate: '#718096', rose: '#ec5e8e',
       cyan: '#37b9d0', fuchsia: '#d45fce', indigo: '#6674df', emerald: '#27b47e', orange: '#f27b43',
-      sky: '#4da7dd', purple: '#8b5ce4', lime: '#7aad4a'
+      sky: '#4da7dd', purple: '#8b5ce4', lime: '#7aad4a', brown: '#a9713d', red: '#e5484d', teal: '#14b8a6'
     };
     return map[color] || '#6747e8';
   }

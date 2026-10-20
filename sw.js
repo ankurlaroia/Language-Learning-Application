@@ -1,4 +1,4 @@
-const CACHE = 'klarweg-b1-v1';
+const CACHE = 'klarweg-b1-v2';
 const ASSETS = [
   './', './index.html', './styles.css', './app.js', './vocab-data.js', './manifest.webmanifest',
   './assets/icon-192.png', './assets/icon-512.png'

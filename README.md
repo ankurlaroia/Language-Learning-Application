@@ -13,7 +13,7 @@ Then open `http://localhost:8080`.
 ## Included
 
 - Responsive dashboard, interactive lesson, vocabulary explorer, speaking lab, AI tutor mock and progress analytics
-- All 364 vocabulary items across 13 themes and units E29, E31, E32, E33 and E34
+- All 808 vocabulary items across 16 themes and units E25–E34
 - Search, article/category/unit filters, pronunciation via browser speech synthesis and flashcard sprint
 - Interactive sentence builder, daily challenge, dark mode, keyboard shortcuts and command palette
 - Installable PWA shell with offline caching
